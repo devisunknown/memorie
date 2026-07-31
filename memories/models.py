@@ -50,3 +50,11 @@ class Image(models.Model):
     @property
     def display_date(self):
         return self.date_taken if self.date_taken else self.uploaded_at.date()
+
+    @property
+    def download_url(self):
+        
+        url = self.image.url
+        if 'res.cloudinary.com' in url and '/image/upload/' in url:
+            return url.replace('/image/upload/', '/image/upload/fl_attachment/')
+        return url
