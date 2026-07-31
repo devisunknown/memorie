@@ -69,9 +69,10 @@ DATABASES = {
         ssl_require=True
     )
 }
-LOGIN_URL ='oslogin/'    
-LOGIN_REDIRECT_URL = ''    
+from django.urls import reverse_lazy
 
+LOGIN_URL = reverse_lazy('oslogin')
+LOGIN_REDIRECT_URL = reverse_lazy('osei')
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
