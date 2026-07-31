@@ -65,7 +65,6 @@ def login(request):
         
         user = authenticate(username=username, password=password)
         if user is not None:
-            login(request,user)
             messages.success(request, 'Logged in successfully')
             return redirect(next_url)
         else:
