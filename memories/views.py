@@ -4,9 +4,11 @@ from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.db.models import Count
 from .models import Image
+from django_ratelimit.decorators import ratelimit
 
 
 @login_required
+@ratelimit(key='user', rate='10/m', method='GET', block=True)
 def osei(request):
     if request.method == 'POST':
         category = request.POST.get('category')
@@ -54,8 +56,8 @@ def osei(request):
     }
     return render(request, 'oseiantwi.html', context)
 
-
-def oslogin(request):
+@ratelimit(key='user', rate='10/m', method='GET', block=True)
+def login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -63,7 +65,7 @@ def oslogin(request):
         
         user = authenticate(username=username, password=password)
         if user is not None:
-            login(request, user)
+            login(user)
             messages.success(request, 'Logged in successfully')
             return redirect(next_url)
         else:
