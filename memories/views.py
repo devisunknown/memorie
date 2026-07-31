@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import  authenticate
 from django.contrib import messages
 from django.db.models import Count
 from .models import Image
 from django_ratelimit.decorators import ratelimit
+from django.contrib.auth import authenticate, login as auth_login
 
 
 @login_required
@@ -56,8 +57,10 @@ def osei(request):
     }
     return render(request, 'oseiantwi.html', context)
 
-@ratelimit(key='user', rate='10/m', method='GET', block=True)
-def login(request):
+
+
+@ratelimit(key='ip', rate='10/m', method='POST', block=True)  # limit POST attempts
+def oslogin(request):  
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -65,6 +68,7 @@ def login(request):
         
         user = authenticate(username=username, password=password)
         if user is not None:
+            auth_login(request, user)  
             messages.success(request, 'Logged in successfully')
             return redirect(next_url)
         else:
