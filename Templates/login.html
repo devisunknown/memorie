@@ -1,0 +1,399 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Login | Osei Antwi Lane</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <!-- Material Icons -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-fixed-variant": "#4e4541",
+              primary: "#735c00",
+              "on-secondary": "#ffffff",
+              "on-tertiary-fixed": "#1a1c1a",
+              "secondary-fixed": "#eedfda",
+              "on-error": "#ffffff",
+              "tertiary-fixed-dim": "#c7c6c4",
+              "error-container": "#ffdad6",
+              "surface-container-low": "#fbf2eb",
+              "on-background": "#1f1b17",
+              "on-surface": "#1f1b17",
+              "on-secondary-container": "#6b605c",
+              error: "#ba1a1a",
+              "primary-fixed-dim": "#e9c349",
+              "outline-variant": "#d0c5af",
+              "on-surface-variant": "#4d4635",
+              "surface-variant": "#eae1da",
+              "surface-container-highest": "#eae1da",
+              "primary-container": "#d4af37",
+              "on-secondary-fixed": "#211a17",
+              "tertiary-fixed": "#e3e2e0",
+              surface: "#fff8f4",
+              tertiary: "#5e5f5d",
+              "surface-dim": "#e1d8d2",
+              "surface-tint": "#735c00",
+              "on-tertiary-fixed-variant": "#464745",
+              secondary: "#675c58",
+              "inverse-primary": "#e9c349",
+              "on-primary-container": "#554300",
+              "on-tertiary": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#ffe088",
+              "on-primary-fixed-variant": "#574500",
+              "on-primary": "#ffffff",
+              "inverse-surface": "#34302b",
+              "surface-container": "#f5ece5",
+              background: "#fff8f4",
+              "secondary-fixed-dim": "#d2c4be",
+              "on-tertiary-container": "#444543",
+              "surface-container-high": "#f0e7df",
+              "surface-bright": "#fff8f4",
+              "secondary-container": "#ebddd7",
+              outline: "#7f7663",
+              "on-error-container": "#93000a",
+              "inverse-on-surface": "#f8efe8",
+              "tertiary-container": "#b3b3b0",
+              "on-primary-fixed": "#241a00",
+            },
+            borderRadius: {
+              DEFAULT: "0.125rem",
+              lg: "0.25rem",
+              xl: "0.5rem",
+              full: "0.75rem",
+            },
+            spacing: {
+              gutter: "24px",
+              unit: "8px",
+              "margin-desktop": "64px",
+              "container-max": "1280px",
+              "margin-mobile": "16px",
+            },
+            fontFamily: {
+              "body-lg": ["DM Sans"],
+              "display-lg": ["Playfair Display"],
+              "display-lg-mobile": ["Playfair Display"],
+              "label-caps": ["DM Sans"],
+              "headline-sm": ["Playfair Display"],
+              "headline-md": ["Playfair Display"],
+              "body-md": ["DM Sans"],
+            },
+            fontSize: {
+              "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+              "display-lg": [
+                "56px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "display-lg-mobile": [
+                "36px",
+                { lineHeight: "1.2", fontWeight: "700" },
+              ],
+              "label-caps": [
+                "12px",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "0.1em",
+                  fontWeight: "700",
+                },
+              ],
+              "headline-sm": ["24px", { lineHeight: "1.4", fontWeight: "500" }],
+              "headline-md": ["32px", { lineHeight: "1.3", fontWeight: "600" }],
+              "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .soft-elevation {
+        box-shadow: 0 24px 48px -12px rgba(74, 69, 64, 0.08);
+      }
+      .memory-card-border {
+        border: 1px solid rgba(208, 197, 175, 0.2);
+      }
+      .vignette-overlay {
+        background: radial-gradient(circle, transparent 20%, #fff8f4 100%);
+      }
+      .texture-overlay {
+        opacity: 0.03;
+        background-image: url("https://www.transparenttextures.com/patterns/felt.png");
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background text-on-background font-body-md min-h-screen flex flex-col selection:bg-primary-fixed selection:text-on-primary-fixed"
+  >
+    <!-- TopAppBar -->
+    <header class="w-full top-0 bg-surface z-50">
+      <nav
+        class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-gutter max-w-container-max mx-auto"
+      >
+        <div class="flex items-center gap-2 cursor-pointer active:opacity-80">
+          <span
+            class="material-symbols-outlined text-primary"
+            data-icon="history_edu"
+            >history_edu</span
+          >
+          <h1 class="font-display-lg text-headline-md text-primary italic">
+            Osei Antwi Lane
+          </h1>
+        </div>
+        <div class="flex items-center gap-4">
+          <span
+            class="material-symbols-outlined text-primary cursor-pointer hover:bg-surface-container-low transition-all p-2 rounded-full"
+            data-icon="account_circle"
+            >account_circle</span
+          >
+        </div>
+      </nav>
+    </header>
+    <!-- Main Content Area -->
+    <main
+      class="flex-grow flex items-center justify-center relative overflow-hidden py-16 px-margin-mobile"
+    >
+      <!-- Background Decorative Element -->
+      <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 texture-overlay"></div>
+        <div class="absolute inset-0 vignette-overlay"></div>
+        <div
+          class="absolute top-[-10%] right-[-5%] w-1/2 h-full opacity-20 transform rotate-6 pointer-events-none"
+        >
+          <img
+            class="w-full h-full object-contain mix-blend-multiply"
+            data-alt="A vintage, sepia-toned photograph of a multi-generational family standing in front of a colonial-style home. The image is soft-focused with subtle film grain and deckled edges, evoking a sense of deep nostalgia and historical preservation. The warm lighting complements the cream and gold color palette of the UI design."
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8xG4xvlnIxG78ZVr78Qyi6Cw-sHSNolycfxYmcMNQy5SIhcXJaaSbQyGmrIcIbntWSCi5d6JFl-XfU3x63z6Ugu9c9qjyTX0GC0fCzC2y7seujp4K08j9aZX_dpjcIJ7U6G_ogWk27tSn7FfDFoFt4P2v_NzWRBo1_69u0yE39OvfjfNJ_2as-qXGtE9cZemAP28_v6P9DsCuBu21XHGZvOxWAC5rQTPTuKN0Gtux2wsgRFNAvMzgwA"
+          />
+        </div>
+      </div>
+      <!-- Login Card -->
+      <div class="relative z-10 w-full max-w-[480px]">
+        <div
+          class="bg-surface-container-lowest p-unit * 4 md:p-12 rounded-xl soft-elevation memory-card-border animate-in fade-in slide-in-from-bottom-4 duration-1000"
+        >
+          <div class="text-center mb-10">
+            <h2
+              class="font-display-lg text-headline-md md:text-display-lg-mobile text-primary mb-2"
+            >
+              Welcome Home
+            </h2>
+            <p class="font-body-md text-secondary">
+              Please sign in to view our family's shared history.
+            </p>
+          </div>
+          <form class="space-y-6" method="POST" action="{% url 'oslogin' %}">
+            {% csrf_token %}
+            <div class="space-y-1">
+              <label
+                class="font-label-caps text-on-surface-variant block ml-1 uppercase"
+                for="access-code"
+                >Username</label
+              >
+              <div class="relative">
+                <input
+                  class="w-full bg-surface-container-low border-b-2 border-outline-variant focus:border-primary focus:ring-0 transition-all px-4 py-3 font-body-md text-on-surface placeholder:text-outline italic rounded-t-lg"
+                  id="username"
+                  placeholder="Enter your unique code"
+                  type="text"
+                  name="username"
+                />
+                <span
+                  class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline-variant text-[20px]"
+                  data-icon="key"
+                  >key</span
+                >
+              </div>
+            </div>
+            <div class="space-y-1">
+              <label
+                class="font-label-caps text-on-surface-variant block ml-1 uppercase"
+                for="password"
+                >Personal Password</label
+              >
+              <div class="relative">
+                <input
+                  class="w-full bg-surface-container-low border-b-2 border-outline-variant focus:border-primary focus:ring-0 transition-all px-4 py-3 font-body-md text-on-surface placeholder:text-outline rounded-t-lg"
+                  id="password"
+                  placeholder="••••••••"
+                  type="password"
+                  name="password"
+                />
+                <span
+                  class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline-variant text-[20px]"
+                  data-icon="lock"
+                  >lock</span
+                >
+              </div>
+            </div>
+            <div class="pt-4">
+              <button
+                class="w-full bg-primary hover:bg-on-primary-fixed-variant text-white font-body-lg font-bold py-4 rounded-lg shadow-lg hover:shadow-xl active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2"
+              >
+                Access Memories
+                <span
+                  class="material-symbols-outlined"
+                  data-icon="arrow_forward"
+                  >arrow_forward</span
+                >
+              </button>
+            </div>
+            <div class="text-center pt-2">
+              <a
+                class="text-secondary hover:text-primary font-body-md transition-colors underline decoration-outline-variant underline-offset-4"
+                href="#"
+              >
+                Forgotten your access code?
+              </a>
+            </div>
+          </form>
+          <div
+            class="mt-12 pt-8 border-t border-surface-container flex flex-col items-center gap-4"
+          >
+            <div class="flex -space-x-3">
+              <!-- Simulated avatars of family members -->
+              <div
+                class="w-10 h-10 rounded-full border-2 border-white bg-secondary-fixed flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  class="w-full h-full object-cover"
+                  data-alt="A portrait of an elderly gentleman with a warm smile, wearing a traditional Ghanaian kente cloth draped over one shoulder. High-end editorial photography style with soft natural light."
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDU0uB79Vp0FP8-SKpY_xEiT0C7qTkCMYYcSF7aGYtGVgW5LjmvUYomE6nrygqsifSGKbEe1sSZBFXVByZTrra2j3Gq_oflKW6WFegkgwAqLfzjNQh8EL9AM83VEyT84BeJf4kdTum0RSohNKfkxoZEit1To-BhjXuW-B7Jsu87qjo4i_y6XkDghNd3TLUhdNAZzNsWlGjD7ZjeFUV2rkZzi6F6GM99NgqHaMZFL3JW2eWTYpaNycT_1w"
+                />
+              </div>
+              <div
+                class="w-10 h-10 rounded-full border-2 border-white bg-primary-fixed flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  class="w-full h-full object-cover"
+                  data-alt="A portrait of a young woman with braided hair and gold jewelry, laughing joyfully in a sunlit garden setting. Professional portraiture with a warm, nostalgic film look."
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmikb5UOF1n59yrcVhCa6Jfs3U0E9ULBWoKfHZ9sCC5x4e_2HQJ7VPZdcaxHoXkC3SAXgxiHh5ar8dT4c7wwOaLLos4Z4ZBZVh7cFDT_rNcWEIoVDn7WgxzdHAvhQv-xfdiz6i2BlGFGLARko5Yz2gs83KONc52Q4wCYBDRMlXhb-0L0wiPTa9RIJayQC9M_UBetP22_ktOup17SWr3SXN_561pPNxWnrPWiH0JwJsqWk3ZpoaETbdkw"
+                />
+              </div>
+              <div
+                class="w-10 h-10 rounded-full border-2 border-white bg-tertiary-fixed flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  class="w-full h-full object-cover"
+                  data-alt="A candid photo of a young boy holding an old leather-bound book, looking curious. The lighting is soft and golden, emphasizing a sense of heritage and continuity."
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJF2utmci8KzA9CtZEMG0QdCJ5WbwRTlVtQkwWIaVsiwWol1p7luhOJOwqxjvUlpHlvXzZxXXTOwCSNqCfJkM9x_QBGqpKbkeDoaH8X9LgAcfYaSkax2YBGcRGFl-3Ea4vWNuIsIaWS6Ey1od54LeMGRGbLZhEpkOdj9rfzhdiQxIQ1lM-xLwjSsDo17TXkJZfFrt5a-9pnuo9IgCb1oYgndZWCVHshWznTeDZaX-lFOohCGOLZj1yVg"
+                />
+              </div>
+              <div
+                class="w-10 h-10 rounded-full border-2 border-white bg-surface-container-high flex items-center justify-center text-xs font-bold text-secondary"
+              >
+                +12
+              </div>
+            </div>
+            <p
+              class="text-label-caps text-on-surface-variant uppercase tracking-widest"
+            >
+              Join the Circle
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Decorative Floral/Scroll element -->
+      <div
+        class="absolute bottom-8 left-margin-desktop opacity-10 pointer-events-none hidden lg:block"
+      >
+        <span
+          class="material-symbols-outlined text-[120px] text-primary"
+          data-icon="temp_preferences_custom"
+          >temp_preferences_custom</span
+        >
+      </div>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-surface-container-low w-full bottom-0">
+      <div
+        class="flex flex-col md:flex-row justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-12 max-w-container-max mx-auto gap-gutter"
+      >
+        <div class="flex flex-col items-center md:items-start gap-2">
+          <span class="font-display-lg text-headline-sm text-primary italic"
+            >Osei Antwi Lane</span
+          >
+          <p class="font-body-md text-secondary text-center md:text-left">
+            © 2024 Osei Antwi Lane. Preserving our digital warmth.
+          </p>
+        </div>
+        <div class="flex flex-wrap justify-center gap-6">
+          <a
+            class="text-secondary hover:text-primary transition-all hover:underline decoration-outline-variant font-body-md"
+            href="#"
+            >Our Story</a
+          >
+          <a
+            class="text-secondary hover:text-primary transition-all hover:underline decoration-outline-variant font-body-md"
+            href="#"
+            >Timeline</a
+          >
+          <a
+            class="text-secondary hover:text-primary transition-all hover:underline decoration-outline-variant font-body-md"
+            href="#"
+            >Contribute</a
+          >
+          <a
+            class="text-secondary hover:text-primary transition-all hover:underline decoration-outline-variant font-body-md"
+            href="#"
+            >Privacy</a
+          >
+        </div>
+      </div>
+    </footer>
+    <script>
+      // Micro-interaction for input fields
+      const inputs = document.querySelectorAll("input");
+      inputs.forEach((input) => {
+        input.addEventListener("focus", () => {
+          input.parentElement.classList.add("scale-[1.01]");
+          input.parentElement.style.transition = "transform 0.3s ease";
+        });
+        input.addEventListener("blur", () => {
+          input.parentElement.classList.remove("scale-[1.01]");
+        });
+      });
+
+      // Simple button press effect
+      const btn = document.querySelector("button");
+      btn.addEventListener("click", function () {
+        this.innerHTML =
+          '<span class="material-symbols-outlined animate-spin" data-icon="sync">sync</span> Opening Archive...';
+        setTimeout(() => {
+          this.innerHTML =
+            'Access Memories <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>';
+        }, 2000);
+      });
+    </script>
+  </body>
+</html>
