@@ -60,7 +60,7 @@ def osei(request):
 
 
 @ratelimit(key='ip', rate='10/m', method='POST', block=True)  # limit POST attempts
-def oslogin(request):  
+def login(request):  
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
