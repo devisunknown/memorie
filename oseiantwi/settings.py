@@ -69,6 +69,9 @@ DATABASES = {
         ssl_require=True
     )
 }
+LOGIN_URL ='oslogin/'    
+LOGIN_REDIRECT_URL = ''    
+
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -105,5 +108,4 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
 
-LOGIN_URL = 'oslogin'    
-LOGIN_REDIRECT_URL = ''    
+   
