@@ -59,12 +59,15 @@ def oslogin(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
+        next_url = request.POST.get('next') or request.GET.get('next') or '/'
+        
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
             messages.success(request, 'Logged in successfully')
-            return redirect('osei')
+            return redirect(next_url)
         else:
             messages.error(request, 'Incorrect login credentials, try again')
             return redirect('oslogin')
+    
     return render(request, 'login.html')

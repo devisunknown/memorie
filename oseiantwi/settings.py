@@ -73,7 +73,6 @@ from django.urls import reverse_lazy
 
 LOGIN_URL = reverse_lazy('oslogin')
 LOGIN_REDIRECT_URL = reverse_lazy('osei')
-
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
