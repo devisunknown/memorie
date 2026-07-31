@@ -105,5 +105,5 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
 
-LOGIN_URL = 'login'    
+LOGIN_URL = 'oslogin'    
 LOGIN_REDIRECT_URL = ''    
