@@ -1,0 +1,536 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Memorie - Create New Album</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;display=swap"
+      rel="stylesheet"
+    />
+    <!-- Material Symbols -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 300,
+          "GRAD" 0,
+          "opsz" 24;
+        display: inline-block;
+        line-height: 1;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: normal;
+        white-space: nowrap;
+        direction: ltr;
+      }
+
+      .scrapbook-texture {
+        background-color: #faf9f6;
+        background-image: radial-gradient(#4a4540 0.5px, transparent 0.5px);
+        background-size: 24px 24px;
+        background-opacity: 0.03;
+      }
+
+      .polaroid-shadow {
+        box-shadow:
+          0 10px 30px -5px rgba(74, 69, 64, 0.1),
+          0 4px 12px -4px rgba(74, 69, 64, 0.05);
+      }
+
+      .paper-lift {
+        transition:
+          transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.3s ease;
+      }
+
+      .paper-lift:hover {
+        transform: translateY(-4px) rotate(1deg);
+        box-shadow: 0 20px 40px -10px rgba(74, 69, 64, 0.15);
+      }
+    </style>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-container": "#d4af37",
+              "on-primary-fixed": "#241a00",
+              "on-tertiary-fixed": "#1a1c1a",
+              "surface-tint": "#735c00",
+              "on-secondary-container": "#6b605c",
+              background: "#fff8f4",
+              "on-tertiary-fixed-variant": "#464745",
+              "surface-container": "#f5ece5",
+              "on-tertiary": "#ffffff",
+              "error-container": "#ffdad6",
+              "on-tertiary-container": "#444543",
+              "on-secondary": "#ffffff",
+              "secondary-fixed": "#eedfda",
+              "surface-container-low": "#fbf2eb",
+              "inverse-primary": "#e9c349",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#ffe088",
+              "outline-variant": "#d0c5af",
+              "inverse-on-surface": "#f8efe8",
+              tertiary: "#5e5f5d",
+              secondary: "#675c58",
+              "on-error": "#ffffff",
+              surface: "#fff8f4",
+              "secondary-container": "#ebddd7",
+              "tertiary-container": "#b3b3b0",
+              "surface-dim": "#e1d8d2",
+              "tertiary-fixed": "#e3e2e0",
+              primary: "#735c00",
+              "surface-bright": "#fff8f4",
+              "on-primary": "#ffffff",
+              "secondary-fixed-dim": "#d2c4be",
+              "on-background": "#1f1b17",
+              "inverse-surface": "#34302b",
+              "on-secondary-fixed": "#211a17",
+              "on-primary-container": "#554300",
+              "on-surface-variant": "#4d4635",
+              error: "#ba1a1a",
+              "tertiary-fixed-dim": "#c7c6c4",
+              "surface-container-highest": "#eae1da",
+              "primary-fixed-dim": "#e9c349",
+              "surface-variant": "#eae1da",
+              "surface-container-high": "#f0e7df",
+              "on-surface": "#1f1b17",
+              outline: "#7f7663",
+              "on-primary-fixed-variant": "#574500",
+              "on-error-container": "#93000a",
+              "on-secondary-fixed-variant": "#4e4541",
+            },
+            borderRadius: {
+              DEFAULT: "0.125rem",
+              lg: "0.25rem",
+              xl: "0.5rem",
+              full: "0.75rem",
+            },
+            spacing: {
+              gutter: "24px",
+              "margin-desktop": "64px",
+              "margin-mobile": "16px",
+              unit: "8px",
+              "container-max": "1280px",
+            },
+            fontFamily: {
+              "headline-md": ["Playfair Display"],
+              "body-lg": ["DM Sans"],
+              "label-caps": ["DM Sans"],
+              "display-lg-mobile": ["Playfair Display"],
+              "body-md": ["DM Sans"],
+              "headline-sm": ["Playfair Display"],
+              "display-lg": ["Playfair Display"],
+            },
+            fontSize: {
+              "headline-md": ["32px", { lineHeight: "1.3", fontWeight: "600" }],
+              "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+              "label-caps": [
+                "12px",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "0.1em",
+                  fontWeight: "700",
+                },
+              ],
+              "display-lg-mobile": [
+                "36px",
+                { lineHeight: "1.2", fontWeight: "700" },
+              ],
+              "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+              "headline-sm": ["24px", { lineHeight: "1.4", fontWeight: "500" }],
+              "display-lg": [
+                "56px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="bg-background text-on-background font-body-md scrapbook-texture min-h-screen"
+  >
+    <!-- TopAppBar -->
+    <header
+      class="w-full top-0 sticky z-50 bg-surface dark:bg-surface-dim shadow-[0_4px_24px_rgba(74,69,64,0.05)]"
+    >
+      <div
+        class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto"
+      >
+        <a
+          class="flex items-center gap-4 cursor-pointer active:scale-95 transition-transform"
+          href="{% url 'my_albums' %}"
+        >
+          <span
+            class="material-symbols-outlined text-primary"
+            data-icon="arrow_back"
+            >arrow_back</span
+          >
+          <h1
+            class="font-display-lg-mobile text-display-lg-mobile md:font-headline-md md:text-headline-md text-primary font-bold"
+          >
+            New Album
+          </h1>
+        </a>
+        <div
+          class="hidden md:flex items-center gap-2 text-on-surface-variant font-label-caps uppercase tracking-widest"
+        >
+          Drafting Narrative
+        </div>
+        <div class="cursor-pointer active:scale-95 transition-transform">
+          <div
+            class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden border border-outline-variant/30 shadow-sm"
+          >
+            {% if request.user.userprofile.profile_picture %}
+            <img
+              class="w-full h-full object-cover"
+              src="{{ request.user.userprofile.profile_picture.url }}"
+            />
+            {% else %}
+            <span class="font-bold text-primary"
+              >{{
+              request.user.userprofile.full_name|default:request.user.username|first|upper
+              }}</span
+            >
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </header>
+
+    {% if messages %}
+    <div class="max-w-[800px] mx-auto px-margin-mobile md:px-0 pt-6">
+      {% for message in messages %}
+      <p
+        class="text-center text-sm rounded-lg py-2 px-4 mb-2 {% if message.tags == 'error' %}bg-error-container text-error{% else %}bg-primary-fixed text-on-primary-fixed{% endif %}"
+      >
+        {{ message }}
+      </p>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <main class="max-w-[800px] mx-auto px-margin-mobile md:px-0 py-12">
+      <form method="POST" action="{% url 'create_album' %}">
+        {% csrf_token %}
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+          <!-- Left Column: Form Details -->
+          <section class="md:col-span-7 flex flex-col gap-10">
+            <!-- Album Identity -->
+            <div class="space-y-8">
+              <div class="relative group">
+                <label
+                  class="font-label-caps text-label-caps text-primary/70 mb-2 block"
+                  for="title"
+                  >Album Title</label
+                >
+                <input
+                  class="w-full bg-transparent border-b-2 border-outline-variant focus:border-primary-container outline-none py-3 font-headline-sm text-headline-sm placeholder:text-on-surface-variant/30 transition-all"
+                  id="title"
+                  name="title"
+                  placeholder="e.g., Summer in Provence"
+                  type="text"
+                  required
+                />
+              </div>
+              <div class="relative group">
+                <label
+                  class="font-label-caps text-label-caps text-primary/70 mb-2 block"
+                  for="description"
+                  >Chronological Anchor / Notes</label
+                >
+                <div
+                  class="flex items-center gap-3 border-b-2 border-outline-variant focus-within:border-primary-container transition-all"
+                >
+                  <span
+                    class="material-symbols-outlined text-on-surface-variant/50"
+                    data-icon="calendar_today"
+                    >calendar_today</span
+                  >
+                  <input
+                    class="w-full bg-transparent outline-none py-3 font-body-lg text-body-lg placeholder:text-on-surface-variant/30"
+                    id="description"
+                    name="description"
+                    placeholder="Year, place, or a short description"
+                    type="text"
+                  />
+                </div>
+              </div>
+            </div>
+            <!-- Privacy Settings -->
+            <div
+              class="bg-surface-container-low p-8 rounded-xl border border-outline-variant/20 shadow-sm"
+            >
+              <h3 class="font-label-caps text-label-caps text-primary mb-6">
+                Sanctuary Privacy
+              </h3>
+              <div class="space-y-4">
+                <label
+                  class="flex items-center justify-between p-4 bg-white rounded-lg border border-outline-variant/20 cursor-pointer hover:border-primary-container transition-colors"
+                >
+                  <div class="flex items-center gap-4">
+                    <span
+                      class="material-symbols-outlined text-primary"
+                      data-icon="lock"
+                      >lock</span
+                    >
+                    <div class="flex flex-col">
+                      <span class="font-body-md font-bold text-on-surface"
+                        >Only me</span
+                      >
+                      <span class="text-[12px] text-on-surface-variant"
+                        >A private vault for your eyes only.</span
+                      >
+                    </div>
+                  </div>
+                  <input
+                    checked
+                    class="text-primary focus:ring-primary border-outline-variant"
+                    name="privacy"
+                    type="radio"
+                    value="private"
+                  />
+                </label>
+                <label
+                  class="flex items-center justify-between p-4 bg-white rounded-lg border border-outline-variant/20 cursor-pointer hover:border-primary-container transition-colors"
+                >
+                  <div class="flex items-center gap-4">
+                    <span
+                      class="material-symbols-outlined text-primary"
+                      data-icon="group"
+                      >group</span
+                    >
+                    <div class="flex flex-col">
+                      <span class="font-body-md font-bold text-on-surface"
+                        >Private Circle</span
+                      >
+                      <span class="text-[12px] text-on-surface-variant"
+                        >Invite friends to view and add photos.</span
+                      >
+                    </div>
+                  </div>
+                  <input
+                    class="text-primary focus:ring-primary border-outline-variant"
+                    name="privacy"
+                    type="radio"
+                    value="shared"
+                  />
+                </label>
+              </div>
+              <p class="text-[12px] text-on-surface-variant/60 mt-4">
+                You can invite people to this album any time from the album page
+                after creating it.
+              </p>
+            </div>
+            <div class="hidden md:block">
+              <button
+                class="w-full bg-primary text-white py-5 px-8 rounded shadow-lg font-label-caps text-label-caps hover:bg-primary-container transition-all active:scale-95 flex items-center justify-center gap-3"
+                type="submit"
+              >
+                <span>Start This Story</span>
+                <span class="material-symbols-outlined" data-icon="auto_stories"
+                  >auto_stories</span
+                >
+              </button>
+              <p
+                class="text-center mt-4 text-on-surface-variant/60 font-body-md italic"
+              >
+                A new chapter in your digital archive awaits.
+              </p>
+            </div>
+          </section>
+          <!-- Right Column: Visual Interaction -->
+          <aside class="md:col-span-5 flex flex-col items-center">
+            <div class="relative w-full max-w-[340px]">
+              <!-- Polaroid Placeholder -->
+              <div
+                class="bg-white p-6 pb-20 polaroid-shadow paper-lift flex flex-col items-center justify-center border border-outline-variant/10 group"
+              >
+                <div
+                  class="w-full aspect-square bg-surface-container-highest flex flex-col items-center justify-center gap-4 overflow-hidden relative border border-inset border-on-surface/5"
+                >
+                  <span
+                    class="material-symbols-outlined text-on-surface-variant/20 text-6xl group-hover:scale-110 transition-transform duration-500"
+                    data-icon="add_a_photo"
+                    >add_a_photo</span
+                  >
+                  <span
+                    class="font-label-caps text-on-surface-variant/40 text-center px-4"
+                    >You'll add your first photo after creating the album</span
+                  >
+                  <div
+                    class="absolute inset-0 pointer-events-none opacity-20 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]"
+                  ></div>
+                </div>
+                <div
+                  class="mt-8 w-2/3 h-2 bg-outline-variant/20 rounded-full"
+                ></div>
+                <div
+                  class="mt-3 w-1/2 h-2 bg-outline-variant/10 rounded-full"
+                ></div>
+                <!-- Floating decoration (Scrapbook feel) -->
+                <div
+                  class="absolute -top-4 -right-4 w-12 h-12 bg-primary-container/20 rounded-full blur-xl"
+                ></div>
+              </div>
+              <!-- Caption text -->
+              <div class="mt-12 text-center">
+                <p
+                  class="font-headline-sm italic text-primary/40 leading-relaxed"
+                >
+                  "Every moment deserves a home."
+                </p>
+              </div>
+              <!-- Subtle vertical line decoration -->
+              <div
+                class="absolute -left-12 top-0 h-full w-[1px] bg-gradient-to-b from-transparent via-primary-container/30 to-transparent hidden lg:block"
+              >
+                <div
+                  class="absolute top-1/4 -left-[3.5px] w-2 h-2 rounded-full border border-primary-container bg-background"
+                ></div>
+                <div
+                  class="absolute top-3/4 -left-[3.5px] w-2 h-2 rounded-full border border-primary-container bg-background"
+                ></div>
+              </div>
+            </div>
+            <!-- Mobile CTA (Floating or pinned) -->
+            <div class="w-full mt-12 md:hidden">
+              <button
+                class="w-full bg-primary text-white py-5 px-8 rounded shadow-lg font-label-caps text-label-caps hover:bg-primary-container transition-all active:scale-95 flex items-center justify-center gap-3"
+                type="submit"
+              >
+                <span>Start This Story</span>
+                <span class="material-symbols-outlined" data-icon="auto_stories"
+                  >auto_stories</span
+                >
+              </button>
+            </div>
+          </aside>
+        </div>
+      </form>
+    </main>
+    <!-- Footer -->
+    <footer
+      class="w-full mt-auto hidden md:flex flex-col items-center justify-center py-12 px-margin-desktop bg-surface-container dark:bg-surface-container-lowest"
+    >
+      <div
+        class="max-w-container-max w-full flex flex-col md:flex-row justify-between items-center opacity-60"
+      >
+        <p class="font-body-md text-secondary">
+          © 2026 Memorie Archive. Preserving digital warmth.
+        </p>
+        <div class="flex gap-8 mt-4 md:mt-0">
+          <a
+            class="font-body-md text-secondary hover:text-primary transition-colors underline"
+            href="#"
+            >Privacy Policy</a
+          >
+          <a
+            class="font-body-md text-secondary hover:text-primary transition-colors underline"
+            href="#"
+            >Terms of Service</a
+          >
+          <a
+            class="font-body-md text-secondary hover:text-primary transition-colors underline"
+            href="#"
+            >Help Center</a
+          >
+        </div>
+      </div>
+    </footer>
+    <!-- BottomNavBar (Mobile) -->
+    <nav
+      class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container-low dark:bg-surface-container-high shadow-[0_-4px_20px_rgba(74,69,64,0.04)] md:hidden"
+    >
+      <div class="flex justify-around items-center py-3 px-4">
+        <a
+          class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-colors active:scale-90 p-2"
+          href="{% url 'my_albums' %}"
+        >
+          <span class="material-symbols-outlined" data-icon="photo_library"
+            >photo_library</span
+          >
+          <span class="font-label-caps text-[10px] mt-1">Albums</span>
+        </a>
+        {% comment %} <a
+          class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-colors active:scale-90 p-2"
+          href="{% url 'pending_invites' %}"
+        > {% endcomment %}
+          <span class="material-symbols-outlined" data-icon="mail">mail</span>
+          <span class="font-label-caps text-[10px] mt-1">Invites</span>
+        </a>
+        <div
+          class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-colors active:scale-90 p-2"
+        >
+          <span class="material-symbols-outlined" data-icon="favorite"
+            >favorite</span
+          >
+          <span class="font-label-caps text-[10px] mt-1">Favorites</span>
+        </div>
+        <div
+          class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-colors active:scale-90 p-2"
+        >
+          <span class="material-symbols-outlined" data-icon="settings"
+            >settings</span
+          >
+          <span class="font-label-caps text-[10px] mt-1">Settings</span>
+        </div>
+      </div>
+    </nav>
+    <script>
+      // Simple micro-interaction for input fields
+      const inputs = document.querySelectorAll('input[type="text"]');
+      inputs.forEach((input) => {
+        input.addEventListener("focus", () => {
+          input.parentElement.classList.add("scale-[1.01]");
+        });
+        input.addEventListener("blur", () => {
+          input.parentElement.classList.remove("scale-[1.01]");
+        });
+      });
+
+      // Toggle radio visual states
+      const radios = document.querySelectorAll('input[name="privacy"]');
+      radios.forEach((radio) => {
+        radio.addEventListener("change", (e) => {
+          radios.forEach((r) =>
+            r
+              .closest("label")
+              .classList.remove(
+                "border-primary-container",
+                "bg-primary-container/5",
+              ),
+          );
+          if (e.target.checked) {
+            e.target
+              .closest("label")
+              .classList.add(
+                "border-primary-container",
+                "bg-primary-container/5",
+              );
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

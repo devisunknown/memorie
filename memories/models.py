@@ -1,7 +1,40 @@
+import uuid
+
 from django.db import models
 from django.conf import settings
 from cloudinary.models import CloudinaryField
 
+
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    full_name = models.CharField(max_length=150)
+    profile_picture = CloudinaryField('profile_picture', folder='osei_antwi/profiles/', null=True, blank=True)
+
+    def __str__(self):
+        return self.user.username
+    
+
+class Album(models.Model):
+    id = models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False
+    )
+    
+    owner = models.ForeignKey(UserProfile,
+        on_delete=models.CASCADE,
+        related_name='albums'
+    )
+    
+    
+    title = models.CharField(max_length=150)
+    description = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.title} ({self.owner.username})"
 
 class Image(models.Model):
     CATEGORY_CHOICES = [
@@ -27,16 +60,24 @@ class Image(models.Model):
         ('vintage', 'Vintage'),
     ]
 
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default='family')
-    note = models.CharField(max_length=200)
-    image = CloudinaryField('image', folder='osei_antwi/memories/')
+    album = models.ForeignKey(
+        Album,
+        on_delete=models.CASCADE,
+        related_name='images'
+    )
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    image = CloudinaryField("image")
+    note = models.TextField(blank=True)
+    category = models.CharField(max_length=50)
     uploaded_at = models.DateTimeField(auto_now_add=True)
-    date_taken = models.DateField(null=True, blank=True)
-    filter_style = models.CharField(max_length=20, choices=FILTER_CHOICES, default='none')
+    filter_style = models.CharField(
+    max_length=20,
+    choices=FILTER_CHOICES,
+    default='none'
+)
 
     class Meta:
-        ordering = ['-date_taken', '-uploaded_at']
+        ordering = [ '-uploaded_at']
 
     def __str__(self):
         return f"{self.get_category_display()} — {self.user.username}"
@@ -46,10 +87,11 @@ class Image(models.Model):
         from django.utils import timezone
         from datetime import timedelta
         return self.uploaded_at >= timezone.now() - timedelta(days=7)
-
+    
+    
     @property
     def display_date(self):
-        return self.date_taken if self.date_taken else self.uploaded_at.date()
+       return self.uploaded_at.date()
 
     @property
     def download_url(self):
@@ -58,3 +100,32 @@ class Image(models.Model):
         if 'res.cloudinary.com' in url and '/image/upload/' in url:
             return url.replace('/image/upload/', '/image/upload/fl_attachment/')
         return url
+
+
+from django.conf import settings
+
+    
+
+
+# memories/models.py
+
+
+class AlbumShare(models.Model):
+    STATUS_CHOICES = [
+        ('pending', 'Pending'),
+        ('approved', 'Approved'),
+        ('declined', 'Declined'),
+    ]
+
+    album = models.ForeignKey(Album, on_delete=models.CASCADE, related_name='shares')
+    shared_with = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='shared_albums')
+    invited_by = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='sent_invites')
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')
+    created_at = models.DateTimeField(auto_now_add=True)
+    responded_at = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        unique_together = ('album', 'shared_with')  # can't invite the same person twice
+
+    def __str__(self):
+        return f"{self.album.title} → {self.shared_with.username} ({self.status})"

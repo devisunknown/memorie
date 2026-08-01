@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Memorie | Every memory, beautifully kept</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-container": "#b3b3b0",
+                    "surface-container-highest": "#eae1da",
+                    "surface-bright": "#fff8f4",
+                    "on-surface": "#1f1b17",
+                    "on-primary-fixed-variant": "#574500",
+                    "on-secondary-container": "#6b605c",
+                    "tertiary-fixed-dim": "#c7c6c4",
+                    "primary": "#735c00",
+                    "inverse-primary": "#e9c349",
+                    "primary-fixed": "#ffe088",
+                    "surface-tint": "#735c00",
+                    "secondary": "#675c58",
+                    "on-secondary-fixed-variant": "#4e4541",
+                    "on-primary-fixed": "#241a00",
+                    "surface": "#fff8f4",
+                    "secondary-container": "#ebddd7",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#eae1da",
+                    "on-tertiary-fixed-variant": "#464745",
+                    "surface-container-low": "#fbf2eb",
+                    "tertiary-fixed": "#e3e2e0",
+                    "inverse-surface": "#34302b",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#d2c4be",
+                    "primary-container": "#d4af37",
+                    "outline": "#7f7663",
+                    "on-tertiary-container": "#444543",
+                    "primary-fixed-dim": "#e9c349",
+                    "on-tertiary": "#ffffff",
+                    "inverse-on-surface": "#f8efe8",
+                    "on-surface-variant": "#4d4635",
+                    "tertiary": "#5e5f5d",
+                    "on-secondary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed": "#1a1c1a",
+                    "surface-container": "#f5ece5",
+                    "secondary-fixed": "#eedfda",
+                    "on-secondary-fixed": "#211a17",
+                    "on-background": "#1f1b17",
+                    "surface-dim": "#e1d8d2",
+                    "error": "#ba1a1a",
+                    "outline-variant": "#d0c5af",
+                    "on-primary-container": "#554300",
+                    "on-error": "#ffffff",
+                    "background": "#fff8f4",
+                    "surface-container-high": "#f0e7df",
+                    "on-primary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "container-max": "1280px",
+                    "gutter": "24px",
+                    "margin-desktop": "64px",
+                    "unit": "8px"
+            },
+            "fontFamily": {
+                    "headline-sm": ["Playfair Display"],
+                    "headline-md": ["Playfair Display"],
+                    "body-md": ["DM Sans"],
+                    "display-lg": ["Playfair Display"],
+                    "label-caps": ["DM Sans"],
+                    "display-lg-mobile": ["Playfair Display"],
+                    "body-lg": ["DM Sans"]
+            },
+            "fontSize": {
+                    "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-lg": ["56px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .scrapbook-shadow {
+            box-shadow: 0 24px 40px -10px rgba(74, 69, 64, 0.08);
+        }
+        .polaroid-frame {
+            padding: 12px 12px 48px 12px;
+            background: white;
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+        .inner-border {
+            box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation Shell -->
+<header class="w-full top-0 sticky z-50 bg-background/80 backdrop-blur-md">
+<nav class="flex justify-between items-center max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-gutter">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary font-bold" data-icon="auto_stories">auto_stories</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">Memorie</span>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-primary font-bold font-body-md transition-colors duration-200" href="#">Home</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary-container transition-colors duration-200" href="#">Archives</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary-container transition-colors duration-200" href="#">Philosophy</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary-container transition-colors duration-200" href="#">Support</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-caps hover:bg-primary-container transition-all active:scale-95">Get Started</button>
+</nav>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative overflow-hidden py-16 md:py-24">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid md:grid-cols-2 gap-16 items-center">
+<div class="z-10 text-center md:text-left">
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg mb-6">Every memory, <br/><span class="text-primary italic">beautifully kept</span>.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-lg mx-auto md:mx-0">
+                        Memorie lets you create digital albums to preserve and relive your favorite moments in a space that feels like home.
+               </p>
+<form action="{% url 'signup' %}" method="get" class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-6">
+<div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+<button class="bg-primary-container text-on-primary-container px-8 py-4 rounded-xl font-label-caps text-center hover:shadow-lg transition-all active:scale-95">Create your first album</button>
+</form>
+<a class="flex items-center justify-center gap-2 px-8 py-4 rounded-xl border border-secondary-container text-secondary font-label-caps hover:bg-secondary-container/20 transition-all" href="{% url 'works' %}">
+                            See how it works <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Scrapbook Photo Grid -->
+<div class="relative h-[500px] md:h-[600px] w-full">
+<div class="absolute top-0 left-0 w-64 h-80 scrapbook-shadow polaroid-frame rotate-[-6deg] z-10 transition-transform hover:rotate-0 hover:z-40 duration-500">
+<img class="w-full h-full object-cover inner-border" data-alt="A nostalgic, warm-toned photograph of a young family laughing during a summer picnic in a golden wheat field, soft sunlight filtering through the trees. The image has a film-like texture and rich, earthy colors consistent with a warm, cream and terracotta brand palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFxiiV418qlUls_u28MwvalMma-mMNiE69biihW0ozf6Y24ZrS4ZPnCHXpuMANQCxp8oVu8mNyRODQHqmWx9cuZddoO4ziXcQMjFgh8U0bNrHvUk5g-YwCJkfW40oNC9NpdF8a5942Hop1jwuWrT2_IVZaCgZVObEbHgn9AedAieRVzXNe8Ld4qCNy0Bal_lUQVFlW9UtRO40EGMuwm_jhC0An4b2LDrDgBIUns8hq2CP6ZP_JWxPFUg"/>
+</div>
+<div class="absolute top-12 right-0 w-72 h-96 scrapbook-shadow polaroid-frame rotate-[8deg] z-20 transition-transform hover:rotate-0 hover:z-40 duration-500">
+<img class="w-full h-full object-cover inner-border" data-alt="A close-up artistic shot of hands holding a vintage camera against a backdrop of soft blush pink flowers and cream-colored linen. The lighting is diffused and ethereal, evoking a sense of calm and nostalgia with high-key whites and muted gold accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBt8MbbbPhFxiLFNRwPI364h5_r6s-tMGLr23igLSN1e3z8kuFuM277EsrF-CUx8ruKvqP2diifs6zls5Kw9FjSbAS5juc9wkk183AIVMq1vEWehB-sHmu-WadqzYLt99-f_gSBTCF9Iar66dAsO_wVKw6TGF20ksTxeeuacIL-hy5ul_t0x8Q4XMedGWafb5tMewerM_d6bIKLeWsaXE9YRdZeT9DnmQ3TSpQDB4Sab0OAOKg-qhrIcA"/>
+</div>
+<div class="absolute bottom-0 left-1/4 w-60 h-72 scrapbook-shadow polaroid-frame rotate-[-2deg] z-30 transition-transform hover:rotate-0 hover:z-40 duration-500">
+<img class="w-full h-full object-cover inner-border" data-alt="A beautiful coastal landscape at sunset, with soft waves lapping at a sandy shore and the sky painted in gradients of terracotta and deep cream. The composition is peaceful and premium, with a focus on natural textures and gentle light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzkX6R7gwztMZuMUannoAoBfautHbwNPnCWLpCXJrVCJ_-mrcZoAV04lyYf9jlt5CvVkSev08PZ9SjA7XhGkXw0Io7Z-1E_L46IQWi6CegJVzHHDqxa_1Ks1JnApdTMSImZAFjrSuXGeVlm1flueGsGq77xWhVFOVinpzJ195CnwDewgIr1mD9BN4TbYk5fp27qlN5LSO9RqMIy9k0JU0DoSymE74x-c3F1JtqTwK0ZtnBT9KpcovPgQ"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature Highlights -->
+<section class="py-24 bg-surface-container-low">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-16">
+<h2 class="font-headline-md text-headline-md mb-4 text-on-surface">Built for Sentiment</h2>
+<p class="font-body-md text-on-surface-variant max-w-xl mx-auto">We've combined the tactile joy of scrapbooking with the convenience of a modern archive.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-gutter">
+<!-- Feature 1 -->
+<div class="bg-white p-8 rounded-full scrapbook-shadow group hover:-translate-y-2 transition-all duration-300">
+<div class="w-12 h-12 rounded-lg bg-secondary-container flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined" data-icon="drag_pan">drag_pan</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-3">Organize effortlessly</h3>
+<p class="text-on-surface-variant font-body-md">Drag-and-drop your favorite shots and let our smart grouping organize them by event, date, or mood.</p>
+</div>
+<!-- Feature 2 -->
+<div class="bg-white p-8 rounded-full scrapbook-shadow group hover:-translate-y-2 transition-all duration-300">
+<div class="w-12 h-12 rounded-lg bg-secondary-container flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-3">Share with loved ones</h3>
+<p class="text-on-surface-variant font-body-md">Create collaborative albums where family and friends can contribute their own perspectives of shared memories.</p>
+</div>
+<!-- Feature 3 -->
+<div class="bg-white p-8 rounded-full scrapbook-shadow group hover:-translate-y-2 transition-all duration-300">
+<div class="w-12 h-12 rounded-lg bg-secondary-container flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-3">Relive moments</h3>
+<p class="text-on-surface-variant font-body-md">Receive beautifully curated yearly recaps that highlight your most cherished milestones across the seasons.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Visual Showcase -->
+<section class="py-24 bg-white overflow-hidden">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="flex flex-col lg:flex-row items-center gap-16">
+<div class="lg:w-1/2">
+<h2 class="font-headline-md text-headline-md mb-6">The App: A seamless <br/>digital archive.</h2>
+<p class="font-body-lg text-on-surface-variant mb-8">Our interface is designed to disappear, letting your memories take center stage. Clean navigation and editorial layouts make browsing as pleasant as looking through a book.</p>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-md">Customizable bento-style grid layouts</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-md">Fast, chronological timeline rail</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-md">Privacy-first secure cloud storage</span>
+</li>
+</ul>
+</div>
+<div class="lg:w-1/2 relative">
+<div class="relative mx-auto border-surface-container-highest border-[12px] rounded-[3rem] h-[640px] w-[310px] shadow-2xl bg-white overflow-hidden">
+<div class="absolute top-0 w-full h-6 bg-surface-container-highest flex justify-center items-center">
+<div class="w-16 h-1 bg-surface-dim rounded-full"></div>
+</div>
+<!-- Mockup Content -->
+<div class="p-6 pt-10 h-full flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h4 class="font-headline-sm text-primary">Summer 2026</h4>
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</div>
+<div class="grid grid-cols-2 gap-3 flex-grow overflow-y-auto no-scrollbar pb-20">
+<div class="aspect-[3/4] bg-surface-container rounded-lg overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A stylized digital mockup showing a photo of a clear blue lake surrounded by mountains, styled with a warm nostalgic filter and minimalist layout for a digital photo album. The aesthetic is clean and high-end, fitting a luxury archive app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQFah5-i3HBA4ozg4h3p2lFEMjvrZTOe5wgoWn_vZ5IH1u0MNYZQeUh2ApHfuAXYkrEymKL6aD6E4NaZNnOTHEcpdUS0WMdE3-7OZ_VG7BgEfqWX0andLEdtkFXw4sOowc_yDZ0om3efijjgOXFO2BKqq3OUutAAeFJOH_IwowGJsf4EiPviScmzaKctdmcLscxWScVFo0IBEElX_1ILtfpq5LH_EogQP2bxeWDMCgC3vXmoGYzNgOPQ"/>
+</div>
+<div class="aspect-square bg-surface-container rounded-lg overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A minimalist photograph of an ice cream cone held against a soft terracotta wall, warm sunlight creating long shadows. The image is part of a digital album mockup, emphasizing clean aesthetics and personal storytelling." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSH20mfuKJIPZsFHKTlO4lxPVV3pdfc_5Nw4HT0sBBdE-mc4ge1igo8g2driubb431smA7Jb2MNUZ1IXOsEZwQfkXu0WQwNCaECAtJti7TMzSz07yA95iMyh3Umlk-bsWNfRI6aqcOnyJcc0Ry1o0nI9VawichTjT53ysp-gT7oqv0I0lqiSsA9GFsK5-kJ6insktcR0D1UojCzG1h9b8cfGAKbHY1bYiOfkWlpbUPhPCPZx2CPNtdlQ"/>
+</div>
+<div class="aspect-square bg-surface-container rounded-lg overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A cozy indoor scene with a soft blanket and an open book by a window, warm afternoon light flooding the room with golden hues. Editorial photography style for a memory keeping application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCx_o3vCIMoSOhX4yfEBA8GHTMFA_opUXttRdlQWTujJ5cF1pfHHF5_hY8Iwpw9OGjzMwFz46NwSVz5EwWFNp7sSj2wzAGwnnh_BYAFE8p1VxLKTZkej6CAVDj6Ec0jkIMW5V0GkdBO-uD0vL_LfDB03-p1TIjOU3U4_LpPFKRE3fJPGkAohRy6qnUhjugT_5J_NDKJPoHk1gKeMeLZjGUBy3kL1w7B2pfu_lmdLM4tsh-MNXmNViyQvw"/>
+</div>
+<div class="aspect-[3/4] bg-surface-container rounded-lg overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A blurry, artistic shot of friends running on a beach during golden hour, emphasizing movement and emotion with a soft, warm color palette of creams and oranges." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKCiMK-See2Gecyu9sg5mPgmic8pVUsmqRjxgYg4gF2v1BBg4BjetamhKYYonA6wdjRErenI9DJI2Nk-toq6Wru9MX8fCIaNHssSKj-TSXkDKZ7sEZ-HuvT0iszUzRIfXGnz0JFSlaxzTn_CyxY8fhlHMSoEgsZ3JT4QBVZsHQSlQjNHEeLFuaksb4LjySauryi3jCfzHrKD4pDWxCAqDa3VlgEoYbuHNTBznmD5KfFwR51rGe-1JdBQ"/>
+</div>
+<div class="col-span-2 aspect-video bg-surface-container rounded-lg overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A wide panoramic shot of a rustic dinner table set outdoors under string lights, warm textures of wood and linen visible, captured in a nostalgic film style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCepenUHtb6QxXCNmWuu9ttQIU_BGH3QXBK5pgOalqu6U4EUjRNhB2XyUs8_vnnlBDpnMYR9UsUd-eOKF4WNNuz8-r3w0Ue3dQe7B3E9b6_U5JbFcFkPyXFlxtJETxmFL5OF8aKEFsJMVr3cmTls3kdAHmEZdmYuwiWkFgPSQvg1tALQOZYVxov8cnoU7fjF4L30RPpgck2-ZVaC5KSxZ3cxkSEYPyffVPZXfhhyiuD6zrS4XVQFa_Iw"/>
+</div>
+</div>
+<!-- Mockup Nav -->
+<div class="absolute bottom-0 left-0 w-full h-16 bg-white/90 backdrop-blur-md flex justify-around items-center px-4 border-t border-surface-container">
+<span class="material-symbols-outlined text-primary" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="search">search</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="add_circle">add_circle</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="favorite">favorite</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="person">person</span>
+</div>
+</div>
+</div>
+<!-- Decorative element -->
+<div class="absolute -bottom-10 -right-10 w-48 h-48 bg-primary-container/20 rounded-full blur-3xl -z-10"></div>
+<div class="absolute -top-10 -left-10 w-48 h-48 bg-secondary-container/30 rounded-full blur-3xl -z-10"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- How it Works -->
+<section class="py-24 bg-background relative">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-20">
+<h2 class="font-headline-md text-headline-md">Three steps to eternity.</h2>
+</div>
+<div class="relative">
+<!-- Timeline Rail -->
+<div class="absolute top-1/2 left-0 right-0 h-[1px] bg-outline-variant hidden md:block -translate-y-1/2 z-0"></div>
+<div class="grid md:grid-cols-3 gap-16 relative z-10">
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-white border-2 border-primary flex items-center justify-center mb-6 scrapbook-shadow">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="cloud_upload">cloud_upload</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-2">1. Upload photos</h3>
+<p class="font-body-md text-on-surface-variant max-w-[240px]">Bulk upload your memories from any device in high resolution.</p>
+</div>
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-white border-2 border-primary flex items-center justify-center mb-6 scrapbook-shadow">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="auto_awesome_motion">auto_awesome_motion</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-2">2. Organize into albums</h3>
+<p class="font-body-md text-on-surface-variant max-w-[240px]">Use our elegant templates to arrange your photos into meaningful stories.</p>
+</div>
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-white border-2 border-primary flex items-center justify-center mb-6 scrapbook-shadow">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="share_reviews">share_reviews</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-2">3. Share or keep private</h3>
+<p class="font-body-md text-on-surface-variant max-w-[240px]">Invite family to view or keep your albums as a personal digital sanctuary.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Social Proof -->
+<section class="py-24 bg-surface-container">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-16">
+<span class="font-label-caps text-primary mb-4 block">WHAT OUR USERS SAY</span>
+<h2 class="font-headline-md text-headline-md">Trusted by storytellers</h2>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Testimonial 1 -->
+<div class="bg-white p-8 rounded-xl scrapbook-shadow">
+<div class="flex gap-1 mb-4 text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md italic text-on-surface mb-8">"Memorie turned my chaotic phone gallery into a curated family treasure. It feels so much more personal than any other cloud storage."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A warm, smiling portrait of a woman in her late 30s with soft natural lighting, sitting in a sunlit garden. The style is gentle and authentic, matching the warm cream and terracotta brand aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAT2Jzz-abD5kN-RFpbWp2wqYWbQ2TV8xSYMjEUcHuVODcRKWbaa1BjYeifXTv8sR2AtixB1OQcQgNyROksZ84IRbMvSW5ae_ASIN2hTASfAU1eWI4xV3jgte5mqTtOgvs9Gr0xCXduwOKrhYfnYYqi4T6E2HKn7xAY5s9ZNPNbC459vGdt-bfCxvUvVKpYb9QcePnouWM08vTiaTNtZSXBtRiRkelsgX4xsEYEFrGCzo7QIXaHay8ilw"/>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Sarah Mitchell</h4>
+<p class="text-on-surface-variant text-sm">Family Archivist</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="bg-white p-8 rounded-xl scrapbook-shadow">
+<div class="flex gap-1 mb-4 text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md italic text-on-surface mb-8">"I love the collaborative albums. Being able to see my daughter's wedding from everyone's perspective in one place is priceless."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional yet warm portrait of an older man with gray hair, looking kindly into the camera. He is wearing a soft linen shirt, and the background is a blurred, warm-toned interior." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkwpO9wHAunVtQ93Pl0MLQv2zHnoITbuAKSgurPSfGa-jDie00qw9PcSYJUYhnK2I24714IA_hbLSMdNrk_3MTnjSYQPZeUgzhANOQFBLMMxOR007BIXKGQGIBwYYM1TlE1k5fdDKwrqpHXXrp43dSRuNaUJ5RyZ8p25LUHvNw_4zIW9VbXlYwYwcc6lCrux0oJsqpS_QVEPOZfY1-1W2R4wML7ZXkEL-VcwdLXHU1OK6x7VC34hUlyQ"/>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Robert Chen</h4>
+<p class="text-on-surface-variant text-sm">Grandfather &amp; Hobbyist</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="bg-white p-8 rounded-xl scrapbook-shadow hidden lg:block">
+<div class="flex gap-1 mb-4 text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md italic text-on-surface mb-8">"The design is just gorgeous. It doesn't feel like a tech product; it feels like a high-end scrapbook that I actually want to open every day."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A stylish, creative professional woman in a bright, modern office space with minimalist wood furniture. The lighting is crisp and natural, highlighting a sophisticated, modern aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYCerSx3LmPblV4GR7_j7pPylF7KaJvFnh9jMu7gLSqSxEHMtP6Ei2hwnWZ9gc4D3Ey4t6OnliOK0lhNcQYhySI5M_mOLE97T0M-JYdpxDyU75yzKBFnrll82FgRXISL45y8LzB3RMFn14N4jNH-2uHSbE5hvJWh8srF5U7mACwq3f6ZHmw8n5fSBWPek5bpuayAWuIzfKPO4jLr4MAx280qFZeVACUdW904N9b0H9AqGjDFETTKl_Pg"/>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Elena Rodriguez</h4>
+<p class="text-on-surface-variant text-sm">Graphic Designer</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Banner -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop">
+<div class="max-w-container-max mx-auto bg-primary text-on-primary p-12 md:p-24 rounded-[3rem] text-center relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary-container/20 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+<div class="absolute bottom-0 left-0 w-96 h-96 bg-primary-container/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl"></div>
+<h2 class="font-headline-md text-headline-md mb-6 relative z-10">Start preserving your memories today</h2>
+<p class="font-body-lg text-primary-fixed mb-12 relative z-10 max-w-xl mx-auto">Join thousands of people who have found a better way to keep their family stories alive for generations.</p>
+<div class="flex flex-col items-center gap-4 relative z-10">
+<button class="bg-primary-container text-on-primary-container px-12 py-5 rounded-full font-label-caps text-lg hover:bg-white transition-all active:scale-95 shadow-xl">Sign up for free</button>
+<p class="text-primary-fixed-dim text-sm opacity-80">Free to start, no credit card required.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Shell -->
+<footer class="w-full py-16 bg-surface-container dark:bg-surface-dim mt-12">
+<div class="flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto px-margin-desktop gap-gutter">
+<div class="flex flex-col items-center md:items-start gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary font-bold" data-icon="auto_stories">auto_stories</span>
+<span class="font-headline-sm text-headline-sm text-primary">Memorie</span>
+</div>
+<p class="font-body-md text-on-surface-variant">© 2024 Memorie. Preserving stories for generations.</p>
+</div>
+<div class="flex gap-8 items-center flex-wrap justify-center">
+<a class="text-secondary hover:text-primary transition-all underline" href="#">Archives</a>
+<a class="text-secondary hover:text-primary transition-all underline" href="#">Our Philosophy</a>
+<a class="text-secondary hover:text-primary transition-all underline" href="#">Privacy</a>
+<a class="text-secondary hover:text-primary transition-all underline" href="#">Support</a>
+</div>
+<div class="flex gap-4">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined" data-icon="public">public</span></button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined" data-icon="mail">mail</span></button>
+</div>
+</div>
+</footer>
+<script>
+        // Simple micro-interactions
+        document.querySelectorAll('button, a').forEach(elem => {
+            elem.addEventListener('mousedown', () => {
+                elem.style.transform = 'scale(0.96)';
+            });
+            elem.addEventListener('mouseup', () => {
+                elem.style.transform = '';
+            });
+            elem.addEventListener('mouseleave', () => {
+                elem.style.transform = '';
+            });
+        });
+
+        // Sticky header background transition
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-sm');
+            } else {
+                header.classList.remove('shadow-sm');
+            }
+        });
+    </script>
+</body></html>

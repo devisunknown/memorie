@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>How it Works | Memorie</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#f5ece5",
+                    "tertiary": "#5e5f5d",
+                    "secondary-fixed": "#eedfda",
+                    "primary-container": "#d4af37",
+                    "outline-variant": "#d0c5af",
+                    "error-container": "#ffdad6",
+                    "on-surface-variant": "#4d4635",
+                    "tertiary-fixed-dim": "#c7c6c4",
+                    "on-primary-fixed-variant": "#574500",
+                    "on-tertiary-fixed": "#1a1c1a",
+                    "on-secondary": "#ffffff",
+                    "inverse-on-surface": "#f8efe8",
+                    "surface-container-low": "#fbf2eb",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed-dim": "#d2c4be",
+                    "surface-container-high": "#f0e7df",
+                    "on-secondary-fixed": "#211a17",
+                    "primary-fixed": "#ffe088",
+                    "outline": "#7f7663",
+                    "on-secondary-fixed-variant": "#4e4541",
+                    "on-error": "#ffffff",
+                    "on-background": "#1f1b17",
+                    "secondary-container": "#ebddd7",
+                    "on-tertiary-container": "#444543",
+                    "inverse-primary": "#e9c349",
+                    "surface-bright": "#fff8f4",
+                    "on-secondary-container": "#6b605c",
+                    "inverse-surface": "#34302b",
+                    "secondary": "#675c58",
+                    "on-tertiary": "#ffffff",
+                    "surface-variant": "#eae1da",
+                    "tertiary-fixed": "#e3e2e0",
+                    "surface": "#fff8f4",
+                    "on-primary-fixed": "#241a00",
+                    "error": "#ba1a1a",
+                    "surface-dim": "#e1d8d2",
+                    "primary-fixed-dim": "#e9c349",
+                    "background": "#fff8f4",
+                    "tertiary-container": "#b3b3b0",
+                    "on-primary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#464745",
+                    "on-primary-container": "#554300",
+                    "surface-tint": "#735c00",
+                    "surface-container-highest": "#eae1da",
+                    "primary": "#735c00",
+                    "on-surface": "#1f1b17"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "margin-desktop": "64px",
+                    "gutter": "24px",
+                    "margin-mobile": "16px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "display-lg-mobile": ["Playfair Display"],
+                    "headline-sm": ["Playfair Display"],
+                    "headline-md": ["Playfair Display"],
+                    "display-lg": ["Playfair Display"],
+                    "label-caps": ["DM Sans"],
+                    "body-md": ["DM Sans"],
+                    "body-lg": ["DM Sans"]
+            },
+            "fontSize": {
+                    "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "display-lg": ["56px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .scrapbook-shadow {
+            box-shadow: 0 24px 40px -10px rgba(74, 69, 64, 0.08);
+        }
+        .polaroid-frame {
+            padding: 12px 12px 36px 12px;
+            background: white;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+        .timeline-line {
+            background: linear-gradient(to bottom, transparent, #d4af37 15%, #d4af37 85%, transparent);
+        }
+        .parallax-element {
+            transition: transform 0.2s cubic-bezier(0.1, 0, 0.3, 1);
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md shadow-sm">
+<nav class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-2 cursor-pointer transition-all active:scale-95">
+<span class="material-symbols-outlined text-primary text-3xl">auto_stories</span>
+<span class="font-display-lg text-headline-sm text-primary tracking-tight">Memorie</span>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-label-caps text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Albums</a>
+<a class="font-label-caps text-primary font-bold border-b-2 border-primary" href="#">How it Works</a>
+<a class="font-label-caps text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Our Story</a>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-caps tracking-widest hover:bg-surface-tint transition-all active:scale-95">LOGIN</button>
+</div>
+<div class="md:hidden">
+<span class="material-symbols-outlined text-on-surface-variant">menu</span>
+</div>
+</nav>
+</header>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="relative px-margin-mobile md:px-margin-desktop py-16 md:py-32 flex flex-col items-center text-center max-w-4xl mx-auto">
+<span class="font-label-caps text-primary tracking-[0.3em] mb-4">THE PROCESS</span>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-6">The journey of a shared memory.</h1>
+<p class="font-body-lg text-secondary max-w-2xl">From a single spark to a collective story, here is how Memorie brings your circle closer together.</p>
+<!-- Animated Ambient Background Layer -->
+<div class="absolute -z-10 top-0 left-1/2 -translate-x-1/2 w-full h-full opacity-40">
+</div>
+</section>
+<!-- Step 1: Create Sanctuary -->
+<section class="px-margin-mobile md:px-margin-desktop py-16 max-w-container-max mx-auto overflow-visible">
+<div class="grid md:grid-cols-12 gap-gutter items-center">
+<div class="md:col-span-5 order-2 md:order-1">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-10 h-10 rounded-full border border-primary-container flex items-center justify-center font-display-lg text-primary text-body-lg">1</div>
+<span class="material-symbols-outlined text-primary-container text-3xl">auto_stories</span>
+</div>
+<h2 class="font-headline-md text-on-surface mb-4">Create Your Sanctuary</h2>
+<p class="font-body-lg text-on-surface-variant">Sign up and start your first album. Think of it as opening a fresh, linen-bound book, waiting for the first ink to hit the page. Every sanctuary is built with privacy and warmth at its core.</p>
+</div>
+<div class="md:col-span-7 order-1 md:order-2 relative h-[400px]">
+<!-- Asymmetric Scrapbook Mockup -->
+<div class="absolute top-0 right-0 w-3/4 scrapbook-shadow polaroid-frame -rotate-2 parallax-element" data-speed="0.05">
+<img class="w-full aspect-[4/3] object-cover" data-alt="A top-down editorial shot of a high-end, cream-colored linen photo album resting on a rustic wooden table. The lighting is soft morning sunlight creating long, gentle shadows. The aesthetic is minimalist and nostalgic, with a single sprig of dried lavender resting beside the book. The color palette consists of warm off-whites and natural wood tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgAuoPI0L_JYIR3hwDNDAGhxqPp-meXQnXo1wrC15DPkWQJjlpY7WCGGwpdwVigTYb1hA3j5RvfrJBWS-5mjLhkc9iNBTXUTz-y-C1vcPrNWXRLfdq_JzM6kGKrpNk92P14Tbu0huDSrp7LXoyuuOoQBgoBFnmLitdF3YvNMVe6EsAALh3Hf13U0s65Y0y9sQktjfV8XX2LB1WUsjd41mVwD9o6nizIImK76GjJMnPIrp7yG62t6HFhw"/>
+</div>
+<div class="absolute bottom-4 left-0 w-1/2 scrapbook-shadow polaroid-frame rotate-6 parallax-element" data-speed="-0.1">
+<img class="w-full aspect-square object-cover" data-alt="A close-up photograph of a vintage fountain pen resting on a piece of high-quality, textured cream paper. The background is a soft-focus blush color. The mood is calm and focused on the act of beginning a creative journey. The lighting is warm and diffused, emphasizing the texture of the paper." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnRvmTsKMudAIutSCnAQej_y33PM-4Q3OqQDCYD9WPF_RjL8JWucN-SLWmaB8OOT0okpxrxYi6taxrjbNO9u8JVMzJQhFDJZfMqdxMgiGQ7sBhbYC6znK5peYfLIv88RaH4firs8a-2n7ccWg3bu2OfAhWLF1IIYhjZMH5h-5GXqB7S6085tDrlazaRwXlaf3u2VnH6Mzj2Am29ouwYhvlxBEAGwpxuZVuE5nh5evl3trMmexe-LtX-g"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Timeline Vertical Connector -->
+<div class="hidden md:flex justify-center h-24">
+<div class="w-[1px] h-full timeline-line relative">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-primary"></div>
+</div>
+</div>
+<!-- Step 2: A Key -->
+<section class="px-margin-mobile md:px-margin-desktop py-16 max-w-container-max mx-auto">
+<div class="grid md:grid-cols-12 gap-gutter items-center">
+<div class="md:col-span-7 relative h-[400px]">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full flex items-center justify-center">
+<div class="w-64 h-80 bg-surface-container rounded-xl scrapbook-shadow flex flex-col items-center justify-center p-8 border border-outline-variant/20 relative rotate-[-4deg]">
+<span class="material-symbols-outlined text-primary text-6xl mb-6" style="font-variation-settings: 'FILL' 1;">key</span>
+<div class="w-full bg-white/50 h-10 rounded flex items-center justify-center border border-dashed border-primary-container">
+<span class="font-label-caps text-primary">M-E-M-O-R-I-E-2-4</span>
+</div>
+<p class="mt-4 font-label-caps text-on-surface-variant text-[10px] uppercase text-center tracking-tighter">Your unique entry key</p>
+</div>
+</div>
+</div>
+<div class="md:col-span-5">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-10 h-10 rounded-full border border-primary-container flex items-center justify-center font-display-lg text-primary text-body-lg">2</div>
+<span class="material-symbols-outlined text-primary-container text-3xl">key</span>
+</div>
+<h2 class="font-headline-md text-on-surface mb-4">A Key for Your Circle</h2>
+<p class="font-body-lg text-on-surface-variant">Generate a private access code unique to your group. No public feeds, no algorithms—just a digital doorstep that only those with the key can cross.</p>
+</div>
+</div>
+</section>
+<!-- Timeline Vertical Connector -->
+<div class="hidden md:flex justify-center h-24">
+<div class="w-[1px] h-full timeline-line relative">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-primary"></div>
+</div>
+</div>
+<!-- Step 3: Invite -->
+<section class="px-margin-mobile md:px-margin-desktop py-16 max-w-container-max mx-auto overflow-visible">
+<div class="grid md:grid-cols-12 gap-gutter items-center">
+<div class="md:col-span-5 order-2 md:order-1">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-10 h-10 rounded-full border border-primary-container flex items-center justify-center font-display-lg text-primary text-body-lg">3</div>
+<span class="material-symbols-outlined text-primary-container text-3xl">mail</span>
+</div>
+<h2 class="font-headline-md text-on-surface mb-4">Invite the Storytellers</h2>
+<p class="font-body-lg text-on-surface-variant">Share your code with friends or family via a simple link. We’ve removed the complexity so even those less tech-savvy can join the conversation with ease.</p>
+</div>
+<div class="md:col-span-7 order-1 md:order-2 flex justify-center items-center relative py-12">
+<div class="relative w-72 h-48 bg-secondary-fixed scrapbook-shadow rounded-lg p-6 flex flex-col justify-between -rotate-6">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary">local_post_office</span>
+<div class="w-8 h-8 rounded-full bg-white/40"></div>
+</div>
+<div class="h-1 bg-white/40 w-3/4"></div>
+<div class="h-1 bg-white/40 w-1/2"></div>
+<div class="h-8 bg-primary rounded flex items-center justify-center">
+<span class="text-on-primary font-label-caps text-[10px]">TAP TO JOIN</span>
+</div>
+</div>
+<div class="absolute top-0 right-10 w-48 h-32 bg-white scrapbook-shadow polaroid-frame rotate-12 -z-10">
+<img class="w-full h-full object-cover" data-alt="A joyful candid photo of three generations of a family laughing together around a garden table. The lighting is the golden hour glow, creating a warm and nostalgic atmosphere. The image feels authentic, slightly grainy like film, and captures a genuine moment of connection." src="https://lh3.googleusercontent.com/aida-public/AB6AXuClF-TYugRPBpMuwFhpAkgZZDK7iqRHXUPnrWDATkMTQ_hoRcIjWpSwspHLWxw7zgjhWqP30EwWm8wvZLO3SFRrg6qULmp4XfIH9e8AEkJpCTWPfZHLEuMXRiJuFS2AvzcD0BUf_W7BcY-RmEa32gSVmDyPaz5Dqu8ynMPvDDqSQIDT2AYmHxpIJuWwTw0GJSqhZPNgKB5ehVk4nLhxRS8145yvt08j2PyrgTlKqae-5Z3zq-2EJsrZqw"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Timeline Vertical Connector -->
+<div class="hidden md:flex justify-center h-24">
+<div class="w-[1px] h-full timeline-line relative">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-primary"></div>
+</div>
+</div>
+<!-- Step 4: Build Together -->
+<section class="px-margin-mobile md:px-margin-desktop py-16 max-w-container-max mx-auto">
+<div class="grid md:grid-cols-12 gap-gutter items-center">
+<div class="md:col-span-7 relative h-[500px]">
+<!-- Overlapping Bento-style Photos -->
+<div class="absolute top-0 left-0 w-1/2 scrapbook-shadow polaroid-frame -rotate-3 z-10">
+<img class="w-full aspect-square object-cover" data-alt="A vintage-style photo of a toddler's first steps on a sandy beach. Soft blue and cream tones dominate the image. The photo has a slightly worn edge and a warm, nostalgic feel. Sunlight glints off the gentle waves in the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVLxGXuYl3h_5ts9UTjmE2JM1tyn7doChpX6I4ZBGUaXcrQ3YLpM9VFgBV7TuocekTeYye5Kb0ntfd3yN7RwGZeFSfHPPhvtJszdw4oezm8xGpAkTkQFRV2ezCtWTWvIX3BJ22BtUFjx73s8tcUoLXTCf37BAu3xgBaZgxyY4Is-tJDP4QJ9KUnDiuN0yQv4mnaWb5Mm9OlweXWurhNEaBMi3u-2UKnX9vh4OF9xfuGzHMurfNSV5wHw"/>
+<div class="mt-2 flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-secondary-container"></div>
+<span class="text-[10px] font-label-caps text-on-surface-variant">Mom: "First steps at Seaside"</span>
+</div>
+</div>
+<div class="absolute bottom-10 right-0 w-3/5 scrapbook-shadow polaroid-frame rotate-2">
+<img class="w-full aspect-[4/3] object-cover" data-alt="A close-up shot of a birthday cake with glowing candles in a dimly lit room. The focus is soft, and the bokeh of the candles creates a warm, intimate atmosphere. The surrounding scene is out of focus, suggesting a close family gathering. The palette is rich with deep oranges, yellows, and soft shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVm5KToVRNaL0gSySBK6sG2mKVrwY-WVfnHNHx-0VftCWCoKVM6LJf1uS411Xfr6H9tnQCUlYwDrcJHtc-j162wH1_A6n3obfCq1lAeEQjjurYmPTqZf6eVp2kFaPqgczmLS8rKQ_cAOKgYmjfoFmuPA3g9_Oi6lMW0nh3WkxjJvAivBwkrOiH42Ph_u0C0Ila-SLM-tDm4nJ2ncUEg3B9Z1h9orHACyx19o2hUGUkKshm6rLdUGW64g"/>
+<div class="mt-2 bg-yellow-100 p-2 text-[10px] font-label-caps text-primary border-l-2 border-primary rotate-1">
+                            "Grandpa loved the lemon zest!" - Sarah
+                        </div>
+</div>
+</div>
+<div class="md:col-span-5">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-10 h-10 rounded-full border border-primary-container flex items-center justify-center font-display-lg text-primary text-body-lg">4</div>
+<span class="material-symbols-outlined text-primary-container text-3xl">favorite</span>
+</div>
+<h2 class="font-headline-md text-on-surface mb-4">Build Together</h2>
+<p class="font-body-lg text-on-surface-variant">Friends post photos directly into the album. Grouped by moments, memories are layered with digital 'sticky notes' and heartfelt comments, turning a simple gallery into a living archive.</p>
+</div>
+</div>
+</section>
+<!-- Final CTA Section -->
+<section class="bg-surface-container py-24 md:py-32 mt-16">
+<div class="px-margin-mobile md:px-margin-desktop max-w-4xl mx-auto text-center">
+<h2 class="font-display-lg text-headline-md md:text-display-lg text-on-surface mb-8">Ready to preserve your history?</h2>
+<p class="font-body-lg text-secondary mb-12">Join thousands of circles already weaving their digital tapestry of warmth and shared connection.</p>
+<div class="flex flex-col md:flex-row gap-4 justify-center items-center">
+<button class="bg-primary text-on-primary px-10 py-4 rounded-lg font-label-caps tracking-widest text-lg hover:bg-surface-tint transition-all active:scale-95 flex items-center gap-2 group">
+                        START YOUR FIRST ALBUM
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<button class="border border-primary text-primary px-10 py-4 rounded-lg font-label-caps tracking-widest text-lg hover:bg-primary/5 transition-all active:scale-95">
+                        EXPLORE EXAMPLES
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-surface-container mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-12 gap-gutter max-w-container-max mx-auto">
+<div class="flex flex-col items-center md:items-start gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface text-3xl">auto_stories</span>
+<span class="font-display-lg text-headline-sm text-on-surface">Memorie</span>
+</div>
+<p class="font-body-md text-secondary text-center md:text-left">© 2024 Memorie. Preserving digital warmth.</p>
+</div>
+<div class="flex gap-8 flex-wrap justify-center">
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors underline" href="#">Our Story</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors underline" href="#">Privacy Policy</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors underline" href="#">Terms of Service</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors underline" href="#">Help Center</a>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-secondary cursor-pointer hover:text-primary transition-colors">share</span>
+<span class="material-symbols-outlined text-secondary cursor-pointer hover:text-primary transition-colors">public</span>
+<span class="material-symbols-outlined text-secondary cursor-pointer hover:text-primary transition-colors">diversity_3</span>
+</div>
+</div>
+</footer>
+<!-- Interactive Layer: Simple Parallax Scroll -->
+<script>
+        document.addEventListener('mousemove', (e) => {
+            const elements = document.querySelectorAll('.parallax-element');
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+
+            elements.forEach(el => {
+                const speed = parseFloat(el.getAttribute('data-speed'));
+                const x = (window.innerWidth - mouseX * speed) / 100;
+                const y = (window.innerHeight - mouseY * speed) / 100;
+                el.style.transform = `translate(${x}px, ${y}px) rotate(${el.classList.contains('rotate-6') ? '6deg' : el.classList.contains('-rotate-2') ? '-2deg' : '0deg'})`;
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+            observer.observe(section);
+        });
+    </script>
+</body></html>

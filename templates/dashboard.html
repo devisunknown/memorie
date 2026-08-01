@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Memorie - Your Digital Shelf</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#1f1b17",
+                    "primary-fixed-dim": "#e9c349",
+                    "on-tertiary-container": "#444543",
+                    "surface-container": "#f5ece5",
+                    "on-error-container": "#93000a",
+                    "primary": "#735c00",
+                    "on-tertiary": "#ffffff",
+                    "inverse-surface": "#34302b",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#574500",
+                    "surface-container-high": "#f0e7df",
+                    "on-tertiary-fixed": "#1a1c1a",
+                    "surface-dim": "#e1d8d2",
+                    "secondary-container": "#ebddd7",
+                    "on-surface": "#1f1b17",
+                    "on-secondary-fixed": "#211a17",
+                    "inverse-primary": "#e9c349",
+                    "outline": "#7f7663",
+                    "on-primary-fixed": "#241a00",
+                    "secondary-fixed": "#eedfda",
+                    "on-secondary": "#ffffff",
+                    "primary-container": "#d4af37",
+                    "inverse-on-surface": "#f8efe8",
+                    "surface-container-highest": "#eae1da",
+                    "tertiary-fixed": "#e3e2e0",
+                    "surface-tint": "#735c00",
+                    "surface-container-lowest": "#ffffff",
+                    "outline-variant": "#d0c5af",
+                    "on-secondary-container": "#6b605c",
+                    "secondary-fixed-dim": "#d2c4be",
+                    "error": "#ba1a1a",
+                    "tertiary-container": "#b3b3b0",
+                    "surface-container-low": "#fbf2eb",
+                    "secondary": "#675c58",
+                    "on-error": "#ffffff",
+                    "on-surface-variant": "#4d4635",
+                    "on-secondary-fixed-variant": "#4e4541",
+                    "tertiary-fixed-dim": "#c7c6c4",
+                    "surface-variant": "#eae1da",
+                    "primary-fixed": "#ffe088",
+                    "on-primary-container": "#554300",
+                    "surface": "#fff8f4",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#464745",
+                    "tertiary": "#5e5f5d",
+                    "background": "#fff8f4",
+                    "surface-bright": "#fff8f4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "margin-desktop": "64px",
+                    "container-max": "1280px",
+                    "gutter": "24px",
+                    "unit": "8px"
+            },
+            "fontFamily": {
+                    "display-lg-mobile": ["Playfair Display"],
+                    "headline-sm": ["Playfair Display"],
+                    "label-caps": ["DM Sans"],
+                    "headline-md": ["Playfair Display"],
+                    "body-md": ["DM Sans"],
+                    "body-lg": ["DM Sans"],
+                    "display-lg": ["Playfair Display"]
+            },
+            "fontSize": {
+                    "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-lg": ["56px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scrapbook-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 32px;
+        }
+        .album-card:nth-child(even) {
+            transform: rotate(1deg);
+        }
+        .album-card:nth-child(odd) {
+            transform: rotate(-1deg);
+        }
+        .album-card:hover {
+            transform: rotate(0deg) scale(1.02);
+            z-index: 10;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-surface dark:bg-surface-dim shadow-[0_4px_24px_rgba(74,69,64,0.05)] z-50">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-4">
+<button class="cursor-pointer active:scale-95 transition-transform text-primary hover:opacity-80 transition-opacity duration-300">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-primary dark:text-primary-fixed-dim italic">Memorie</h1>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<nav class="flex gap-6">
+<a class="text-primary dark:text-primary-fixed-dim font-bold hover:opacity-80 transition-opacity duration-300" href="{% url 'my_albums' %}">Albums</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:opacity-80 transition-opacity duration-300" href="#">Timeline</a>
+{% comment %} <a class="text-on-surface-variant dark:text-on-surface-variant hover:opacity-80 transition-opacity duration-300" href="{% url 'pending_invites' %}">
+              Invites
+              {% if pending_invite_count %}
+              <span class="ml-1 inline-flex items-center justify-center bg-primary-container text-on-primary-container text-xs font-bold rounded-full w-5 h-5">{{ pending_invite_count }}</span>
+              {% endif %}
+            </a>
+</nav> {% endcomment %}
+<div class="w-10 h-10 rounded-full border-2 border-primary-container overflow-hidden cursor-pointer active:scale-95 transition-transform">
+{% if request.user.userprofile.profile_picture %}
+<img class="w-full h-full object-cover" src="{{ request.user.userprofile.profile_picture.url }}"/>
+{% else %}
+<div class="w-full h-full bg-surface-container-highest flex items-center justify-center text-primary font-bold">
+                {{ request.user.userprofile.full_name|default:request.user.username|first|upper }}
+              </div>
+{% endif %}
+</div>
+</div>
+<!-- Mobile Avatar -->
+<div class="md:hidden w-8 h-8 rounded-full border-2 border-primary-container overflow-hidden">
+{% if request.user.userprofile.profile_picture %}
+<img class="w-full h-full object-cover" src="{{ request.user.userprofile.profile_picture.url }}"/>
+{% else %}
+<div class="w-full h-full bg-surface-container-highest flex items-center justify-center text-primary font-bold text-xs">
+              {{ request.user.userprofile.full_name|default:request.user.username|first|upper }}
+            </div>
+{% endif %}
+</div>
+</div>
+</header>
+
+{% if messages %}
+<div class="max-w-container-max mx-auto w-full px-margin-mobile md:px-margin-desktop pt-6">
+  {% for message in messages %}
+  <p class="text-center text-sm rounded-lg py-2 px-4 mb-2 {% if message.tags == 'error' %}bg-error-container text-error{% else %}bg-primary-fixed text-on-primary-fixed{% endif %}">
+    {{ message }}
+  </p>
+  {% endfor %}
+</div>
+{% endif %}
+
+<main class="flex-1 max-w-container-max mx-auto w-full px-margin-mobile md:px-margin-desktop py-12 pb-32 md:pb-20">
+<!-- Hero Section -->
+<section class="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
+<div class="max-w-2xl">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-4">Good to see you, {{ request.user.userprofile.full_name|default:request.user.username }}.</h2>
+<p class="text-body-lg text-on-surface-variant">Welcome back to your digital shelf. {{ total_memories }} memories preserved. What would you like to revisit today?</p>
+</div>
+<a class="flex items-center gap-3 bg-primary-container text-on-primary-container px-8 py-4 rounded-xl shadow-[0_12px_24px_rgba(115,92,0,0.15)] hover:shadow-[0_16px_32px_rgba(115,92,0,0.2)] active:scale-95 transition-all duration-300 group" href="{% url 'create_album' %}">
+<span class="material-symbols-outlined font-bold">add</span>
+<span class="font-label-caps text-label-caps uppercase tracking-widest">Create New Album</span>
+</a>
+</section>
+<!-- Albums Grid -->
+{% if albums %}
+<section class="scrapbook-grid">
+  {% for album in albums %}
+  <a class="album-card group cursor-pointer transition-all duration-500 bg-surface-container-lowest p-6 shadow-[0_24px_40px_rgba(74,69,64,0.06)] flex flex-col" href="{% url 'album_detail' album.id %}">
+    <div class="aspect-[4/5] overflow-hidden mb-6 relative bg-surface-container-highest">
+      {% with cover=album.images.first %}
+      {% if cover %}
+      <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="{{ cover.image.url }}"/>
+      {% else %}
+      <div class="w-full h-full flex items-center justify-center text-on-surface-variant">
+        <span class="material-symbols-outlined text-6xl opacity-40">auto_stories</span>
+      </div>
+      {% endif %}
+      {% endwith %}
+      <div class="absolute inset-0 border-[12px] border-surface-container-lowest pointer-events-none"></div>
+      {% if album.owner != request.user.userprofile %}
+      <span class="absolute top-2 right-2 bg-surface-container-lowest text-primary text-xs font-bold px-2 py-1 rounded-full shadow">Shared</span>
+      {% endif %}
+    </div>
+    <div class="flex flex-col gap-1">
+      <span class="font-label-caps text-label-caps text-primary tracking-widest">EST. {{ album.created_at|date:"Y" }}</span>
+      <h3 class="font-headline-sm text-headline-sm text-on-surface">{{ album.title }}</h3>
+      <div class="flex items-center gap-2 mt-4">
+        <span class="material-symbols-outlined text-[18px] text-on-surface-variant">photo_library</span>
+        <p class="font-body-md text-body-md text-on-surface-variant">{{ album.images.count }} Photo{{ album.images.count|pluralize }}</p>
+      </div>
+    </div>
+  </a>
+  {% endfor %}
+</section>
+{% else %}
+<section class="flex flex-col items-center justify-center text-center py-24 gap-4">
+  <span class="material-symbols-outlined text-6xl text-primary-container">auto_stories</span>
+  <h3 class="font-headline-sm text-headline-sm text-on-surface">No albums yet</h3>
+  <p class="text-body-md text-on-surface-variant max-w-sm">Create your first album to start preserving memories.</p>
+  <a class="flex items-center gap-3 bg-primary-container text-on-primary-container px-8 py-4 rounded-xl shadow-[0_12px_24px_rgba(115,92,0,0.15)] hover:shadow-[0_16px_32px_rgba(115,92,0,0.2)] active:scale-95 transition-all duration-300" href="{% url 'create_album' %}">
+    <span class="material-symbols-outlined font-bold">add</span>
+    <span class="font-label-caps text-label-caps uppercase tracking-widest">Create New Album</span>
+  </a>
+</section>
+{% endif %}
+</main>
+<!-- Footer (Web Only) -->
+<footer class="hidden md:flex flex-col items-center justify-center py-12 px-margin-desktop w-full bg-surface-container dark:bg-surface-container-lowest">
+<h2 class="font-display-lg text-display-lg text-primary mb-6 italic">Memorie</h2>
+<div class="flex gap-8 mb-6">
+<a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors underline cursor-pointer" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors underline cursor-pointer" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors underline cursor-pointer" href="#">Help Center</a>
+</div>
+<p class="font-body-md text-body-md text-secondary dark:text-secondary-fixed-dim">© 2026 Memorie Archive. Preserving digital warmth.</p>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 w-full flex justify-around items-center py-3 px-4 md:hidden bg-surface-container-low dark:bg-surface-container-high shadow-xl z-50 rounded-t-xl">
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 tap-highlight-transparent active:scale-90 transition-transform" href="{% url 'my_albums' %}">
+<span class="material-symbols-outlined">photo_library</span>
+<span class="font-label-caps text-label-caps mt-0.5">Albums</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-colors tap-highlight-transparent active:scale-90 transition-transform px-4 py-1" href="#">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="font-label-caps text-label-caps mt-0.5">Timeline</span>
+</a>
+{% comment %} <a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-colors tap-highlight-transparent active:scale-90 transition-transform px-4 py-1" href="{% url 'pending_invites' %}"> {% endcomment %}
+<span class="material-symbols-outlined">mail</span>
+<span class="font-label-caps text-label-caps mt-0.5">Invites</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-colors tap-highlight-transparent active:scale-90 transition-transform px-4 py-1" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps mt-0.5">Settings</span>
+</a>
+</nav>
+</body></html>
