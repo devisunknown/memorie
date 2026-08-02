@@ -184,43 +184,84 @@
 <section class="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
 <div class="max-w-2xl">
 <h2 class="font-headline-md text-headline-md text-on-surface mb-4">Good to see you, {{ request.user.userprofile.full_name|default:request.user.username }}.</h2>
-<p class="text-body-lg text-on-surface-variant">Welcome back to your digital shelf. {{ total_memories }} memories preserved. What would you like to revisit today?</p>
+<p class="text-body-lg text-on-surface-variant">Welcome back to your digital shelf. {{ request.user.userprofile.total_memories }} memories preserved. What would you like to revisit today?</p>
 </div>
 <a class="flex items-center gap-3 bg-primary-container text-on-primary-container px-8 py-4 rounded-xl shadow-[0_12px_24px_rgba(115,92,0,0.15)] hover:shadow-[0_16px_32px_rgba(115,92,0,0.2)] active:scale-95 transition-all duration-300 group" href="{% url 'create_album' %}">
 <span class="material-symbols-outlined font-bold">add</span>
 <span class="font-label-caps text-label-caps uppercase tracking-widest">Create New Album</span>
 </a>
+
 </section>
 <!-- Albums Grid -->
 {% if albums %}
 <section class="scrapbook-grid">
   {% for album in albums %}
-  <a class="album-card group cursor-pointer transition-all duration-500 bg-surface-container-lowest p-6 shadow-[0_24px_40px_rgba(74,69,64,0.06)] flex flex-col" href="{% url 'album_detail' album.id %}">
-    <div class="aspect-[4/5] overflow-hidden mb-6 relative bg-surface-container-highest">
-      {% with cover=album.images.first %}
-      {% if cover %}
-      <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="{{ cover.image.url }}"/>
-      {% else %}
-      <div class="w-full h-full flex items-center justify-center text-on-surface-variant">
-        <span class="material-symbols-outlined text-6xl opacity-40">auto_stories</span>
-      </div>
-      {% endif %}
-      {% endwith %}
-      <div class="absolute inset-0 border-[12px] border-surface-container-lowest pointer-events-none"></div>
-      {% if album.owner != request.user.userprofile %}
-      <span class="absolute top-2 right-2 bg-surface-container-lowest text-primary text-xs font-bold px-2 py-1 rounded-full shadow">Shared</span>
-      {% endif %}
+
+<div class="album-card group cursor-pointer transition-all duration-500 bg-surface-container-lowest p-6 shadow-[0_24px_40px_rgba(74,69,64,0.06)] flex flex-col">
+
+    <a href="{% url 'album_detail' album.id %}">
+        <div class="aspect-[4/5] overflow-hidden mb-6 relative bg-surface-container-highest">
+
+            {% with cover=album.images.first %}
+            {% if cover %}
+            <img 
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                src="{{ cover.image.url }}"
+            />
+            {% else %}
+            <div class="w-full h-full flex items-center justify-center text-on-surface-variant">
+                <span class="material-symbols-outlined text-6xl opacity-40">
+                    auto_stories
+                </span>
+            </div>
+            {% endif %}
+            {% endwith %}
+
+        </div>
+
+        <div class="flex flex-col gap-1">
+            <span class="font-label-caps text-label-caps text-primary tracking-widest">
+                EST. {{ album.created_at|date:"Y" }}
+            </span>
+
+            <h3 class="font-headline-sm text-headline-sm text-on-surface">
+                {{ album.title }}
+            </h3>
+        </div>
+    </a>
+
+
+    <div class="flex justify-between items-center mt-4">
+
+        <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[18px] text-on-surface-variant">
+                photo_library
+            </span>
+
+            <p class="font-body-md text-body-md text-on-surface-variant">
+                {{ album.images.count }} Photo{{ album.images.count|pluralize }}
+            </p>
+        </div>
+
+
+        <a
+            href="{% url 'delete_album' album.id %}"
+            class="flex items-center gap-2 bg-error text-white px-4 py-2 rounded-xl hover:opacity-90 transition"
+        >
+            <span class="material-symbols-outlined">
+                delete
+            </span>
+
+            <span class="text-xs uppercase font-bold">
+                Delete
+            </span>
+        </a>
+
     </div>
-    <div class="flex flex-col gap-1">
-      <span class="font-label-caps text-label-caps text-primary tracking-widest">EST. {{ album.created_at|date:"Y" }}</span>
-      <h3 class="font-headline-sm text-headline-sm text-on-surface">{{ album.title }}</h3>
-      <div class="flex items-center gap-2 mt-4">
-        <span class="material-symbols-outlined text-[18px] text-on-surface-variant">photo_library</span>
-        <p class="font-body-md text-body-md text-on-surface-variant">{{ album.images.count }} Photo{{ album.images.count|pluralize }}</p>
-      </div>
-    </div>
-  </a>
-  {% endfor %}
+
+</div>
+
+{% endfor %}
 </section>
 {% else %}
 <section class="flex flex-col items-center justify-center text-center py-24 gap-4">

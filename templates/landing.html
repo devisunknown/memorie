@@ -127,15 +127,19 @@
 <nav class="flex justify-between items-center max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-gutter">
 <div class="flex items-center gap-2">
 <span class="material-symbols-outlined text-primary font-bold" data-icon="auto_stories">auto_stories</span>
+<a href="{% url 'landing' %}" class="flex items-center gap-2 cursor-pointer active:opacity-80">
 <span class="font-headline-md text-headline-md font-bold text-primary">Memorie</span>
+</a>
 </div>
-<div class="hidden md:flex gap-8 items-center">
-<a class="text-primary font-bold font-body-md transition-colors duration-200" href="#">Home</a>
-<a class="text-on-surface-variant font-body-md hover:text-primary-container transition-colors duration-200" href="#">Archives</a>
-<a class="text-on-surface-variant font-body-md hover:text-primary-container transition-colors duration-200" href="#">Philosophy</a>
-<a class="text-on-surface-variant font-body-md hover:text-primary-container transition-colors duration-200" href="#">Support</a>
-</div>
+
+<a href="{% url 'signup' %}" class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-caps hover:bg-primary-container transition-all active:scale-95">
 <button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-caps hover:bg-primary-container transition-all active:scale-95">Get Started</button>
+
+</a>
+<div class="hidden md:flex items-center gap-8">
+<a class="px-6 py-2 bg-primary text-white font-label-caps rounded-lg hover:opacity-90 transition-opacity" href="{% url 'login' %}">Login</a>
+</div>
+
 </nav>
 </header>
 <main>
@@ -386,7 +390,9 @@
 <h2 class="font-headline-md text-headline-md mb-6 relative z-10">Start preserving your memories today</h2>
 <p class="font-body-lg text-primary-fixed mb-12 relative z-10 max-w-xl mx-auto">Join thousands of people who have found a better way to keep their family stories alive for generations.</p>
 <div class="flex flex-col items-center gap-4 relative z-10">
+<a href="{% url 'signup' %}" class="bg-primary-container text-on-primary-container px-12 py-5 rounded-full font-label-caps text-lg hover:bg-white transition-all active:scale-95 shadow-xl">
 <button class="bg-primary-container text-on-primary-container px-12 py-5 rounded-full font-label-caps text-lg hover:bg-white transition-all active:scale-95 shadow-xl">Sign up for free</button>
+</a>
 <p class="text-primary-fixed-dim text-sm opacity-80">Free to start, no credit card required.</p>
 </div>
 </div>

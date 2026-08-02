@@ -11,9 +11,15 @@ class UserProfile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     full_name = models.CharField(max_length=150)
     profile_picture = CloudinaryField('profile_picture', folder='osei_antwi/profiles/', null=True, blank=True)
-
+    
+    
+    
+    @property
+    def total_memories(self):
+      return Image.objects.filter(user=self).count()
+  
     def __str__(self):
-        return self.user.username
+      return self.user.username
     
 
 class Album(models.Model):
@@ -32,9 +38,11 @@ class Album(models.Model):
     title = models.CharField(max_length=150)
     description = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    share_token = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
+
 
     def __str__(self):
-        return f"{self.title} ({self.owner.username})"
+      return f"{self.title} ({self.owner})"
 
 class Image(models.Model):
     CATEGORY_CHOICES = [
@@ -75,12 +83,16 @@ class Image(models.Model):
     choices=FILTER_CHOICES,
     default='none'
 )
+    category = models.CharField(
+    max_length=50,
+    choices=CATEGORY_CHOICES
+)
 
     class Meta:
         ordering = [ '-uploaded_at']
 
     def __str__(self):
-        return f"{self.get_category_display()} — {self.user.username}"
+      return f"{self.get_category_display()} — {self.user.user.username}"
 
     @property
     def is_recent(self):
@@ -128,4 +140,23 @@ class AlbumShare(models.Model):
         unique_together = ('album', 'shared_with')  # can't invite the same person twice
 
     def __str__(self):
-        return f"{self.album.title} → {self.shared_with.username} ({self.status})"
+     return f"{self.album.title} → {self.shared_with.user.username} ({self.status})"
+ 
+ 
+ 
+class GuestAccess(models.Model):
+    STATUS_CHOICES = [
+        ('pending', 'Pending'),
+        ('approved', 'Approved'),
+        ('declined', 'Declined'),
+    ]
+
+    album = models.ForeignKey(Album, on_delete=models.CASCADE, related_name='guest_requests')
+    name = models.CharField(max_length=150)
+    token = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')
+    created_at = models.DateTimeField(auto_now_add=True)
+    responded_at = models.DateTimeField(null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.name} → {self.album.title} ({self.status})"

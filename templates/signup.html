@@ -123,11 +123,11 @@
 <nav class="flex justify-between items-center max-w-container-max mx-auto px-margin-desktop py-gutter">
 <div class="flex items-center gap-2">
 <span class="material-symbols-outlined text-primary text-3xl" data-icon="auto_stories">auto_stories</span>
+<a href="{% url 'landing' %}" class="flex items-center gap-2 cursor-pointer active:opacity-80">
 <span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed tracking-tight">Memorie</span>
+</a>
 </div>
 <div class="hidden md:flex items-center gap-8">
-<a class="font-label-caps text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Archives</a>
-<a class="font-label-caps text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Philosophy</a>
 <a class="px-6 py-2 bg-primary text-white font-label-caps rounded-lg hover:opacity-90 transition-opacity" href="{% url 'login' %}">Login</a>
 </div>
 </nav>

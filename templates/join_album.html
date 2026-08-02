@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Join {{ album.title }} | Memorie</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-tint": "#735c00","on-secondary-fixed": "#211a17","on-surface": "#1f1b17",
+                    "primary-fixed": "#ffe088","on-tertiary-fixed-variant": "#464745","outline-variant": "#d0c5af",
+                    "on-tertiary-container": "#444543","on-secondary-fixed-variant": "#4e4541","on-secondary-container": "#6b605c",
+                    "surface-bright": "#fff8f4","surface": "#fff8f4","surface-container-lowest": "#ffffff",
+                    "on-primary-fixed": "#241a00","tertiary-fixed": "#e3e2e0","secondary": "#675c58",
+                    "surface-variant": "#eae1da","error": "#ba1a1a","secondary-fixed-dim": "#d2c4be",
+                    "surface-container-highest": "#eae1da","on-error-container": "#93000a","secondary-container": "#ebddd7",
+                    "on-primary-container": "#554300","inverse-surface": "#34302b","on-tertiary": "#ffffff",
+                    "primary-fixed-dim": "#e9c349","on-primary": "#ffffff","surface-container": "#f5ece5",
+                    "on-surface-variant": "#4d4635","background": "#fff8f4","tertiary-fixed-dim": "#c7c6c4",
+                    "outline": "#7f7663","primary": "#735c00","secondary-fixed": "#eedfda","on-background": "#1f1b17",
+                    "surface-dim": "#e1d8d2","on-error": "#ffffff","surface-container-low": "#fbf2eb",
+                    "inverse-primary": "#e9c349","tertiary-container": "#b3b3b0","on-primary-fixed-variant": "#574500",
+                    "primary-container": "#d4af37","on-secondary": "#ffffff","inverse-on-surface": "#f8efe8",
+                    "on-tertiary-fixed": "#1a1c1a","error-container": "#ffdad6","tertiary": "#5e5f5d",
+                    "surface-container-high": "#f0e7df"
+            },
+            "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+            "spacing": { "container-max": "1280px", "margin-mobile": "16px", "gutter": "24px", "unit": "8px", "margin-desktop": "64px" },
+            "fontFamily": {
+                    "label-caps": ["DM Sans"], "headline-md": ["Playfair Display"], "headline-sm": ["Playfair Display"],
+                    "body-md": ["DM Sans"], "body-lg": ["DM Sans"], "display-lg-mobile": ["Playfair Display"], "display-lg": ["Playfair Display"]
+            },
+            "fontSize": {
+                    "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "display-lg": ["56px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #FAF9F6;
+            color: #1f1b17;
+        }
+        .scrapbook-shadow {
+            box-shadow: 0 24px 40px rgba(74, 69, 64, 0.08);
+        }
+        .image-inset-border {
+            box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+        }
+        .timeline-node::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 100%;
+            background-color: #d4af37;
+            opacity: 0.3;
+            z-index: -1;
+        }
+        .focused-input:focus {
+            outline: none;
+            border-bottom: 2px solid #d4af37;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-body-md overflow-x-hidden">
+<header class="w-full top-0 sticky z-50 bg-surface shadow-sm flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4">
+<div class="flex items-center gap-4">
+<a class="font-headline-md text-headline-md text-primary tracking-tight" href="{% url 'landing' %}">Memorie</a>
+</div>
+<div class="flex items-center gap-4">
+{% if request.user.is_authenticated %}
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container bg-secondary-container flex items-center justify-center">
+{% if request.user.userprofile.profile_picture %}
+<img class="w-full h-full object-cover" src="{{ request.user.userprofile.profile_picture.url }}"/>
+{% else %}
+<span class="font-bold text-primary">{{ request.user.userprofile.full_name|default:request.user.username|first|upper }}</span>
+{% endif %}
+</div>
+{% endif %}
+</div>
+</header>
+
+{% if messages %}
+<div class="max-w-4xl w-full mx-auto px-margin-mobile pt-6">
+  {% for message in messages %}
+  <p class="text-center text-sm rounded-lg py-2 px-4 mb-2 {% if message.tags == 'error' %}bg-error-container text-error{% else %}bg-primary-fixed text-on-primary-fixed{% endif %}">
+    {{ message }}
+  </p>
+  {% endfor %}
+</div>
+{% endif %}
+
+<main class="flex-grow flex items-center justify-center px-margin-mobile py-12 md:py-24 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-96 h-96 bg-secondary-container/20 rounded-full blur-3xl -z-10 translate-x-1/2 -translate-y-1/2"></div>
+<div class="absolute bottom-0 left-0 w-64 h-64 bg-primary-container/10 rounded-full blur-3xl -z-10 -translate-x-1/2 translate-y-1/2"></div>
+<div class="max-w-4xl w-full grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+<!-- Left Side: Album Card -->
+<div class="md:col-span-5 order-2 md:order-1 space-y-6">
+<div class="bg-surface-container-lowest p-6 scrapbook-shadow rounded-lg transform -rotate-2 relative">
+<div class="aspect-square bg-surface-variant overflow-hidden rounded-sm relative flex items-center justify-center">
+{% with cover=album.images.first %}
+{% if cover %}
+<img class="w-full h-full object-cover image-inset-border" src="{{ cover.image.url }}"/>
+{% else %}
+<span class="material-symbols-outlined text-6xl text-outline-variant">auto_stories</span>
+{% endif %}
+{% endwith %}
+<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+</div>
+<div class="pt-6 pb-2">
+<span class="font-label-caps text-label-caps bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full">EST. {{ album.created_at|date:"Y" }}</span>
+<p class="font-headline-sm text-headline-sm mt-4 text-on-surface">{{ album.title }}</p>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 italic">Created by {{ album.owner.full_name|default:album.owner.user.username }}</p>
+</div>
+</div>
+<div class="hidden md:block absolute -left-12 top-1/2 w-px h-64 timeline-node bg-primary-container/30"></div>
+</div>
+<!-- Right Side: Content & Action -->
+<div class="md:col-span-7 order-1 md:order-2 md:pl-12 space-y-8">
+<div class="space-y-4">
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary leading-tight">
+                        You're invited to <br class="hidden md:block"/> the sanctuary.
+                    </h2>
+<p class="font-body-lg text-body-lg text-secondary max-w-md">
+{% if album.description %}
+This digital album is a private collection of moments from <span class="font-bold text-on-surface">{{ album.title }}</span>: {{ album.description }}.
+{% else %}
+This digital album is a private collection of moments from <span class="font-bold text-on-surface">{{ album.title }}</span>.
+{% endif %}
+                    </p>
+</div>
+<!-- Access Form -->
+<div class="space-y-8 bg-surface-container-low/50 p-8 rounded-xl scrapbook-shadow border border-outline-variant/20">
+{% if request.user.is_authenticated %}
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-full overflow-hidden border-2 border-primary-container bg-secondary-container flex items-center justify-center flex-shrink-0">
+{% if request.user.userprofile.profile_picture %}
+<img class="w-full h-full object-cover" src="{{ request.user.userprofile.profile_picture.url }}"/>
+{% else %}
+<span class="font-bold text-primary text-lg">{{ request.user.userprofile.full_name|default:request.user.username|first|upper }}</span>
+{% endif %}
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Joining as</p>
+<p class="font-headline-sm text-headline-sm text-on-surface">{{ request.user.userprofile.full_name|default:request.user.username }}</p>
+</div>
+</div>
+<form method="POST" class="space-y-6">
+{% csrf_token %}
+<button class="group relative w-full py-5 bg-primary text-on-primary font-label-caps text-label-caps tracking-widest uppercase overflow-hidden transition-all active:scale-95 shadow-lg shadow-primary/20" type="submit">
+<span class="relative z-10">Join This Album</span>
+<div class="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+</button>
+</form>
+<div class="flex items-start gap-3 p-4 bg-secondary-container/30 rounded-lg">
+<span class="material-symbols-outlined text-primary text-lg mt-0.5">lock</span>
+<div class="space-y-1">
+<p class="font-body-md text-on-surface-variant text-sm leading-relaxed">
+<strong class="text-on-surface">Instant access:</strong> Joining gives you full access to view and add photos to this album.
+                                </p>
+</div>
+</div>
+{% elif request_pending %}
+<div class="flex flex-col items-center text-center gap-4 py-4">
+<span class="material-symbols-outlined text-5xl text-primary-container">hourglass_top</span>
+<div>
+<p class="font-headline-sm text-headline-sm text-on-surface">Request sent, {{ guest_request_name }}</p>
+<p class="font-body-md text-on-surface-variant mt-2">Waiting for {{ album.owner.full_name|default:album.owner.user.username }} to approve your access. Check back soon, or refresh this page.</p>
+</div>
+</div>
+{% else %}
+<div class="space-y-4">
+<label class="font-label-caps text-label-caps text-on-surface-variant block uppercase tracking-widest" for="guest_name">Enter your name to request access</label>
+<form method="POST" class="space-y-6">
+{% csrf_token %}
+<input class="w-full bg-transparent border-t-0 border-x-0 border-b border-outline-variant py-4 px-0 font-headline-sm text-headline-sm focused-input transition-all placeholder:text-outline-variant/60" id="guest_name" name="guest_name" placeholder="Your name..." type="text" required/>
+<button class="group relative w-full py-5 bg-primary text-on-primary font-label-caps text-label-caps tracking-widest uppercase overflow-hidden transition-all active:scale-95 shadow-lg shadow-primary/20" type="submit">
+<span class="relative z-10">Request to View</span>
+<div class="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+</button>
+</form>
+</div>
+<div class="flex items-start gap-3 p-4 bg-secondary-container/30 rounded-lg">
+<span class="material-symbols-outlined text-primary text-lg mt-0.5">visibility</span>
+<div class="space-y-1">
+<p class="font-body-md text-on-surface-variant text-sm leading-relaxed">
+<strong class="text-on-surface">No account needed to view.</strong> The album owner will approve your request. Have an account? <a href="{% url 'login' %}?next={{ request.path }}" class="text-primary underline">Log in</a> to also add your own photos.
+                                </p>
+</div>
+</div>
+{% endif %}
+</div>
+<div class="flex items-center gap-6 pt-4 text-outline">
+<p class="font-label-caps text-[10px] tracking-widest uppercase">{{ member_count }} member{{ member_count|pluralize }} already archived here</p>
+</div>
+</div>
+</div>
+</main>
+<footer class="py-12 px-margin-mobile text-center">
+<p class="font-label-caps text-label-caps text-outline-variant">© 2026 Memorie Digital Archives</p>
+</footer>
+</body></html>
