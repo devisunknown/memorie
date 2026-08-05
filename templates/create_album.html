@@ -1,9 +1,15 @@
+{% load static %}
 <!doctype html>
 
 <html class="light" lang="en">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link
+      rel="icon"
+      href="{% static 'images/memorie.png' %}"
+      type="image/x-icon"
+    />
     <title>Memorie - Create New Album</title>
     <!-- Google Fonts -->
     <link
@@ -198,15 +204,24 @@
           Drafting Narrative
         </div>
         <div class="cursor-pointer active:scale-95 transition-transform">
-          <div class="w-10 h-10 rounded-full border-2 border-primary-container overflow-hidden cursor-pointer active:scale-95 transition-transform">
-{% if request.user.userprofile.profile_picture %}
-<img class="w-full h-full object-cover" src="{{ request.user.userprofile.profile_picture.url }}"/>
-{% else %}
-<div class="w-full h-full bg-surface-container-highest flex items-center justify-center text-primary font-bold">
-                {{ request.user.userprofile.full_name|default:request.user.username|first|upper }}
-              </div>
-{% endif %}
-</div>
+          <div
+            class="w-10 h-10 rounded-full border-2 border-primary-container overflow-hidden cursor-pointer active:scale-95 transition-transform"
+          >
+            {% if request.user.userprofile.profile_picture %}
+            <img
+              class="w-full h-full object-cover"
+              src="{{ request.user.userprofile.profile_picture.url }}"
+            />
+            {% else %}
+            <div
+              class="w-full h-full bg-surface-container-highest flex items-center justify-center text-primary font-bold"
+            >
+              {{
+              request.user.userprofile.full_name|default:request.user.username|first|upper
+              }}
+            </div>
+            {% endif %}
+          </div>
         </div>
       </div>
     </header>
@@ -465,12 +480,13 @@
           >
           <span class="font-label-caps text-[10px] mt-1">Albums</span>
         </a>
-        <a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-colors active:scale-90 p-2"
-  href="{% url 'pending_invites' %}"
->
-  <span class="material-symbols-outlined" data-icon="mail">mail</span>
-  <span class="font-label-caps text-[10px] mt-1">Invites</span>
-</a>
+        <a
+          class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-colors active:scale-90 p-2"
+          href="{% url 'pending_invites' %}"
+        >
+          <span class="material-symbols-outlined" data-icon="mail">mail</span>
+          <span class="font-label-caps text-[10px] mt-1">Invites</span>
+        </a>
         <div
           class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-colors active:scale-90 p-2"
         >

@@ -1,253 +1,506 @@
-<!DOCTYPE html>
+{% load static %}
+<!doctype html>
 
-<html lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Share Album - Memorie</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&amp;family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<style>
-    .material-symbols-outlined {
-      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-    }
-    .photo-corner-tl {
-      position: absolute; top: 0; left: 0; width: 32px; height: 32px;
-      border-top: 2px solid #d4af37; border-left: 2px solid #d4af37; opacity: 0.4;
-    }
-    .photo-corner-br {
-      position: absolute; bottom: 0; right: 0; width: 32px; height: 32px;
-      border-bottom: 2px solid #d4af37; border-right: 2px solid #d4af37; opacity: 0.4;
-    }
-    .linen-texture {
-      background-image: url("https://www.transparenttextures.com/patterns/linen-design.png");
-    }
-    .asymmetric-shadow {
-      box-shadow: 12px 12px 40px rgba(74, 69, 64, 0.06), -4px -4px 20px rgba(255, 255, 255, 0.8);
-    }
-  </style>
-<script id="tailwind-config">
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          "colors": {
-            "tertiary": "#5e5f5d","surface-tint": "#735c00","error-container": "#ffdad6",
-            "inverse-on-surface": "#f8efe8","on-background": "#1f1b17","on-error": "#ffffff",
-            "error": "#ba1a1a","on-primary-fixed": "#241a00","primary-container": "#d4af37",
-            "on-surface-variant": "#4d4635","surface-container-low": "#fbf2eb","tertiary-fixed": "#e3e2e0",
-            "on-surface": "#1f1b17","surface-container-high": "#f0e7df","primary-fixed": "#ffe088",
-            "on-tertiary-fixed-variant": "#464745","secondary-fixed-dim": "#d2c4be","secondary-container": "#ebddd7",
-            "on-primary": "#ffffff","on-primary-fixed-variant": "#574500","surface-variant": "#eae1da",
-            "surface-bright": "#fff8f4","secondary-fixed": "#eedfda","on-tertiary-container": "#444543",
-            "background": "#fff8f4","surface-dim": "#e1d8d2","on-tertiary": "#ffffff","secondary": "#675c58",
-            "tertiary-container": "#b3b3b0","on-primary-container": "#554300","on-secondary": "#ffffff",
-            "on-secondary-container": "#6b605c","outline": "#7f7663","surface-container-highest": "#eae1da",
-            "surface-container-lowest": "#ffffff","surface": "#fff8f4","tertiary-fixed-dim": "#c7c6c4",
-            "primary": "#735c00","inverse-surface": "#34302b","on-secondary-fixed-variant": "#4e4541",
-            "outline-variant": "#d0c5af","surface-container": "#f5ece5","inverse-primary": "#e9c349",
-            "on-secondary-fixed": "#211a17","primary-fixed-dim": "#e9c349","on-tertiary-fixed": "#1a1c1a",
-            "on-error-container": "#93000a"
-          },
-          "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
-          "spacing": { "unit": "8px", "margin-mobile": "16px", "container-max": "1280px", "margin-desktop": "64px", "gutter": "24px" },
-          "fontFamily": {
-            "body-md": ["DM Sans"], "body-lg": ["DM Sans"], "label-caps": ["DM Sans"],
-            "display-lg-mobile": ["Playfair Display"], "headline-md": ["Playfair Display"],
-            "headline-sm": ["Playfair Display"], "display-lg": ["Playfair Display"]
-          },
-          "fontSize": {
-            "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
-            "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
-            "label-caps": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "700" }],
-            "display-lg-mobile": ["36px", { "lineHeight": "1.2", "fontWeight": "700" }],
-            "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
-            "headline-sm": ["24px", { "lineHeight": "1.4", "fontWeight": "500" }],
-            "display-lg": ["56px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }]
-          }
-        }
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link
+      rel="icon"
+      href="{% static 'images/memorie.png' %}"
+      type="image/x-icon"
+    />
+    <title>Share Album - Memorie</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&amp;family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
       }
-    }
-  </script>
-</head>
-<body class="bg-surface text-on-surface font-body-md min-h-screen pb-32">
-<header class="w-full top-0 sticky bg-surface z-40 flex items-center justify-between px-margin-mobile md:px-margin-desktop py-4">
-<div class="flex items-center gap-4">
-<a class="material-symbols-outlined text-primary active:scale-95 duration-200" href="{% url 'album_detail' album.id %}">arrow_back</a>
-<h1 class="font-headline-sm text-headline-sm text-primary">Share Album</h1>
-</div>
-</header>
+      .photo-corner-tl {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 32px;
+        height: 32px;
+        border-top: 2px solid #d4af37;
+        border-left: 2px solid #d4af37;
+        opacity: 0.4;
+      }
+      .photo-corner-br {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 32px;
+        height: 32px;
+        border-bottom: 2px solid #d4af37;
+        border-right: 2px solid #d4af37;
+        opacity: 0.4;
+      }
+      .linen-texture {
+        background-image: url("https://www.transparenttextures.com/patterns/linen-design.png");
+      }
+      .asymmetric-shadow {
+        box-shadow:
+          12px 12px 40px rgba(74, 69, 64, 0.06),
+          -4px -4px 20px rgba(255, 255, 255, 0.8);
+      }
+    </style>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              tertiary: "#5e5f5d",
+              "surface-tint": "#735c00",
+              "error-container": "#ffdad6",
+              "inverse-on-surface": "#f8efe8",
+              "on-background": "#1f1b17",
+              "on-error": "#ffffff",
+              error: "#ba1a1a",
+              "on-primary-fixed": "#241a00",
+              "primary-container": "#d4af37",
+              "on-surface-variant": "#4d4635",
+              "surface-container-low": "#fbf2eb",
+              "tertiary-fixed": "#e3e2e0",
+              "on-surface": "#1f1b17",
+              "surface-container-high": "#f0e7df",
+              "primary-fixed": "#ffe088",
+              "on-tertiary-fixed-variant": "#464745",
+              "secondary-fixed-dim": "#d2c4be",
+              "secondary-container": "#ebddd7",
+              "on-primary": "#ffffff",
+              "on-primary-fixed-variant": "#574500",
+              "surface-variant": "#eae1da",
+              "surface-bright": "#fff8f4",
+              "secondary-fixed": "#eedfda",
+              "on-tertiary-container": "#444543",
+              background: "#fff8f4",
+              "surface-dim": "#e1d8d2",
+              "on-tertiary": "#ffffff",
+              secondary: "#675c58",
+              "tertiary-container": "#b3b3b0",
+              "on-primary-container": "#554300",
+              "on-secondary": "#ffffff",
+              "on-secondary-container": "#6b605c",
+              outline: "#7f7663",
+              "surface-container-highest": "#eae1da",
+              "surface-container-lowest": "#ffffff",
+              surface: "#fff8f4",
+              "tertiary-fixed-dim": "#c7c6c4",
+              primary: "#735c00",
+              "inverse-surface": "#34302b",
+              "on-secondary-fixed-variant": "#4e4541",
+              "outline-variant": "#d0c5af",
+              "surface-container": "#f5ece5",
+              "inverse-primary": "#e9c349",
+              "on-secondary-fixed": "#211a17",
+              "primary-fixed-dim": "#e9c349",
+              "on-tertiary-fixed": "#1a1c1a",
+              "on-error-container": "#93000a",
+            },
+            borderRadius: {
+              DEFAULT: "0.125rem",
+              lg: "0.25rem",
+              xl: "0.5rem",
+              full: "0.75rem",
+            },
+            spacing: {
+              unit: "8px",
+              "margin-mobile": "16px",
+              "container-max": "1280px",
+              "margin-desktop": "64px",
+              gutter: "24px",
+            },
+            fontFamily: {
+              "body-md": ["DM Sans"],
+              "body-lg": ["DM Sans"],
+              "label-caps": ["DM Sans"],
+              "display-lg-mobile": ["Playfair Display"],
+              "headline-md": ["Playfair Display"],
+              "headline-sm": ["Playfair Display"],
+              "display-lg": ["Playfair Display"],
+            },
+            fontSize: {
+              "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+              "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+              "label-caps": [
+                "12px",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "0.1em",
+                  fontWeight: "700",
+                },
+              ],
+              "display-lg-mobile": [
+                "36px",
+                { lineHeight: "1.2", fontWeight: "700" },
+              ],
+              "headline-md": ["32px", { lineHeight: "1.3", fontWeight: "600" }],
+              "headline-sm": ["24px", { lineHeight: "1.4", fontWeight: "500" }],
+              "display-lg": [
+                "56px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-surface text-on-surface font-body-md min-h-screen pb-32">
+    <header
+      class="w-full top-0 sticky bg-surface z-40 flex items-center justify-between px-margin-mobile md:px-margin-desktop py-4"
+    >
+      <div class="flex items-center gap-4">
+        <a
+          class="material-symbols-outlined text-primary active:scale-95 duration-200"
+          href="{% url 'album_detail' album.id %}"
+          >arrow_back</a
+        >
+        <h1 class="font-headline-sm text-headline-sm text-primary">
+          Share Album
+        </h1>
+      </div>
+    </header>
 
-{% if messages %}
-<div class="max-w-[1000px] mx-auto px-margin-mobile md:px-margin-desktop pt-2">
-  {% for message in messages %}
-  <p class="text-center text-sm rounded-lg py-2 px-4 mb-2 {% if message.tags == 'error' %}bg-error-container text-error{% else %}bg-primary-fixed text-on-primary-fixed{% endif %}">
-    {{ message }}
-  </p>
-  {% endfor %}
-</div>
-{% endif %}
+    {% if messages %}
+    <div
+      class="max-w-[1000px] mx-auto px-margin-mobile md:px-margin-desktop pt-2"
+    >
+      {% for message in messages %}
+      <p
+        class="text-center text-sm rounded-lg py-2 px-4 mb-2 {% if message.tags == 'error' %}bg-error-container text-error{% else %}bg-primary-fixed text-on-primary-fixed{% endif %}"
+      >
+        {{ message }}
+      </p>
+      {% endfor %}
+    </div>
+    {% endif %}
 
-<main class="max-w-[1000px] mx-auto px-margin-mobile md:px-margin-desktop pt-8">
-<section class="mb-12 relative overflow-hidden bg-surface-container rounded-xl p-8 md:p-12 border border-outline-variant/30 linen-texture">
-<div class="photo-corner-tl"></div>
-<div class="photo-corner-br"></div>
-<div class="relative z-10 flex flex-col items-center text-center">
-<div class="mb-4 inline-block px-3 py-1 bg-primary-container/20 rounded-full">
-<span class="font-label-caps text-label-caps text-primary uppercase">Current Archive</span>
-</div>
-<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg mb-2">{{ album.title }}</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant italic font-serif">Invite your storytellers to join this album.</p>
-</div>
-</section>
-<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
-<div class="md:col-span-7 space-y-gutter">
+    <main
+      class="max-w-[1000px] mx-auto px-margin-mobile md:px-margin-desktop pt-8"
+    >
+      <section
+        class="mb-12 relative overflow-hidden bg-surface-container rounded-xl p-8 md:p-12 border border-outline-variant/30 linen-texture"
+      >
+        <div class="photo-corner-tl"></div>
+        <div class="photo-corner-br"></div>
+        <div class="relative z-10 flex flex-col items-center text-center">
+          <div
+            class="mb-4 inline-block px-3 py-1 bg-primary-container/20 rounded-full"
+          >
+            <span class="font-label-caps text-label-caps text-primary uppercase"
+              >Current Archive</span
+            >
+          </div>
+          <h2
+            class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg mb-2"
+          >
+            {{ album.title }}
+          </h2>
+          <p
+            class="font-body-lg text-body-lg text-on-surface-variant italic font-serif"
+          >
+            Invite your storytellers to join this album.
+          </p>
+        </div>
+      </section>
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+        <div class="md:col-span-7 space-y-gutter">
+          <!-- Share via Link -->
+          <article
+            class="bg-surface-container-lowest p-8 rounded-xl asymmetric-shadow"
+          >
+            <h3
+              class="font-headline-sm text-headline-sm mb-6 flex items-center gap-2"
+            >
+              <span class="material-symbols-outlined text-primary">link</span>
+              Share via Link
+            </h3>
+            <div
+              class="flex items-center gap-3 bg-surface-variant/30 p-4 rounded-lg border border-dashed border-outline-variant"
+            >
+              <code
+                id="join-link"
+                class="flex-1 font-mono text-body-md text-primary font-bold overflow-hidden text-ellipsis whitespace-nowrap"
+                >{{ join_url }}</code
+              >
+              <button
+                type="button"
+                class="flex items-center gap-2 text-primary font-label-caps text-label-caps bg-surface px-3 py-2 rounded border border-outline-variant/30 hover:bg-primary-container transition-colors"
+                onclick="copyLink(this)"
+              >
+                <span class="material-symbols-outlined text-[18px]"
+                  >content_copy</span
+                >
+                COPY
+              </button>
+            </div>
+            <p class="mt-4 text-on-surface-variant text-body-md italic">
+              Anyone who's logged in and opens this link joins the album right
+              away.
+            </p>
+            <form
+              method="POST"
+              action="{% url 'regenerate_share_link' album.id %}"
+              class="mt-4"
+            >
+              {% csrf_token %}
+              <button
+                type="submit"
+                class="text-error font-label-caps text-label-caps hover:underline"
+                onclick="
+                  return confirm(
+                    'This will invalidate the current link. Continue?',
+                  );
+                "
+              >
+                REGENERATE LINK (revokes the old one)
+              </button>
+            </form>
+          </article>
 
-<!-- Share via Link -->
-<article class="bg-surface-container-lowest p-8 rounded-xl asymmetric-shadow">
-<h3 class="font-headline-sm text-headline-sm mb-6 flex items-center gap-2">
-<span class="material-symbols-outlined text-primary">link</span>
-            Share via Link
-          </h3>
-<div class="flex items-center gap-3 bg-surface-variant/30 p-4 rounded-lg border border-dashed border-outline-variant">
-<code id="join-link" class="flex-1 font-mono text-body-md text-primary font-bold overflow-hidden text-ellipsis whitespace-nowrap">{{ join_url }}</code>
-<button type="button" class="flex items-center gap-2 text-primary font-label-caps text-label-caps bg-surface px-3 py-2 rounded border border-outline-variant/30 hover:bg-primary-container transition-colors" onclick="copyLink(this)">
-<span class="material-symbols-outlined text-[18px]">content_copy</span>
-              COPY
-            </button>
-</div>
-<p class="mt-4 text-on-surface-variant text-body-md italic">Anyone who's logged in and opens this link joins the album right away.</p>
-<form method="POST" action="{% url 'regenerate_share_link' album.id %}" class="mt-4">
-{% csrf_token %}
-<button type="submit" class="text-error font-label-caps text-label-caps hover:underline" onclick="return confirm('This will invalidate the current link. Continue?');">
-              REGENERATE LINK (revokes the old one)
-            </button>
-</form>
-</article>
+          <!-- Invite by Username -->
+          <article
+            class="bg-surface-container-lowest p-8 rounded-xl asymmetric-shadow relative overflow-hidden"
+          >
+            <h3
+              class="font-headline-sm text-headline-sm mb-6 flex items-center gap-2"
+            >
+              <span class="material-symbols-outlined text-primary"
+                >person_add</span
+              >
+              Invite by Username
+            </h3>
+            <form
+              method="POST"
+              action="{% url 'share_album' album.id %}"
+              class="space-y-4"
+            >
+              {% csrf_token %}
+              <div class="relative">
+                <input
+                  class="w-full bg-surface-variant/20 border-b-2 border-outline-variant focus:border-primary outline-none py-3 px-1 transition-all font-body-md"
+                  name="username"
+                  placeholder="Friend's username"
+                  type="text"
+                  required
+                />
+              </div>
+              <button
+                class="w-full md:w-auto px-8 py-3 bg-primary-container text-on-primary-container rounded-lg font-label-caps text-label-caps hover:shadow-lg active:scale-95 transition-all duration-200"
+                type="submit"
+              >
+                SEND INVITATION
+              </button>
+            </form>
+            <p class="mt-4 text-on-surface-variant text-body-md italic">
+              They'll see this invite the next time they check their pending
+              invites, and can approve or decline it.
+            </p>
+          </article>
+        </div>
 
-<!-- Invite by Username -->
-<article class="bg-surface-container-lowest p-8 rounded-xl asymmetric-shadow relative overflow-hidden">
-<h3 class="font-headline-sm text-headline-sm mb-6 flex items-center gap-2">
-<span class="material-symbols-outlined text-primary">person_add</span>
-            Invite by Username
-          </h3>
-<form method="POST" action="{% url 'share_album' album.id %}" class="space-y-4">
-{% csrf_token %}
-<div class="relative">
-<input class="w-full bg-surface-variant/20 border-b-2 border-outline-variant focus:border-primary outline-none py-3 px-1 transition-all font-body-md" name="username" placeholder="Friend's username" type="text" required/>
-</div>
-<button class="w-full md:w-auto px-8 py-3 bg-primary-container text-on-primary-container rounded-lg font-label-caps text-label-caps hover:shadow-lg active:scale-95 transition-all duration-200" type="submit">
-              SEND INVITATION
-            </button>
-</form>
-<p class="mt-4 text-on-surface-variant text-body-md italic">They'll see this invite the next time they check their pending invites, and can approve or decline it.</p>
-</article>
-</div>
-
-{% if pending_guest_requests %}
-<article class="bg-surface-container-lowest p-8 rounded-xl asymmetric-shadow">
-<h3 class="font-headline-sm text-headline-sm mb-6 flex items-center gap-2">
-<span class="material-symbols-outlined text-primary">how_to_reg</span>
+        {% if pending_guest_requests %}
+        <article
+          class="bg-surface-container-lowest p-8 rounded-xl asymmetric-shadow"
+        >
+          <h3
+            class="font-headline-sm text-headline-sm mb-6 flex items-center gap-2"
+          >
+            <span class="material-symbols-outlined text-primary"
+              >how_to_reg</span
+            >
             Pending Guest Requests
           </h3>
-<div class="space-y-4">
-{% for req in pending_guest_requests %}
-<div class="flex items-center justify-between gap-4 p-4 bg-surface-variant/20 rounded-lg">
-<div>
-<p class="font-body-md font-bold text-on-surface">{{ req.name }}</p>
-<p class="text-label-caps text-on-surface-variant">Requested {{ req.created_at|timesince }} ago</p>
-</div>
-<div class="flex gap-2">
-<form method="POST" action="{% url 'respond_guest_request' album.id req.id 'approve' %}">
-{% csrf_token %}
-<button type="submit" class="px-4 py-2 bg-primary-container text-on-primary-container rounded-lg font-label-caps text-label-caps hover:shadow-md active:scale-95 transition-all">
-                APPROVE
-              </button>
-</form>
-<form method="POST" action="{% url 'respond_guest_request' album.id req.id 'decline' %}">
-{% csrf_token %}
-<button type="submit" class="px-4 py-2 border border-outline-variant text-on-surface-variant rounded-lg font-label-caps text-label-caps hover:bg-surface-variant/30 active:scale-95 transition-all">
-                DECLINE
-              </button>
-</form>
-</div>
-</div>
-{% endfor %}
-</div>
-</article>
-{% endif %}
+          <div class="space-y-4">
+            {% for req in pending_guest_requests %}
+            <div
+              class="flex items-center justify-between gap-4 p-4 bg-surface-variant/20 rounded-lg"
+            >
+              <div>
+                <p class="font-body-md font-bold text-on-surface">
+                  {{ req.name }}
+                </p>
+                <p class="text-label-caps text-on-surface-variant">
+                  Requested {{ req.created_at|timesince }} ago
+                </p>
+              </div>
+              <div class="flex gap-2">
+                <form
+                  method="POST"
+                  action="{% url 'respond_guest_request' album.id req.id 'approve' %}"
+                >
+                  {% csrf_token %}
+                  <button
+                    type="submit"
+                    class="px-4 py-2 bg-primary-container text-on-primary-container rounded-lg font-label-caps text-label-caps hover:shadow-md active:scale-95 transition-all"
+                  >
+                    APPROVE
+                  </button>
+                </form>
+                <form
+                  method="POST"
+                  action="{% url 'respond_guest_request' album.id req.id 'decline' %}"
+                >
+                  {% csrf_token %}
+                  <button
+                    type="submit"
+                    class="px-4 py-2 border border-outline-variant text-on-surface-variant rounded-lg font-label-caps text-label-caps hover:bg-surface-variant/30 active:scale-95 transition-all"
+                  >
+                    DECLINE
+                  </button>
+                </form>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </article>
+        {% endif %}
 
-<!-- Right Column: People with Access -->
-<div class="md:col-span-5">
-<article class="bg-surface-container-lowest p-8 rounded-xl asymmetric-shadow sticky top-24">
-<div class="mb-8 flex items-center justify-between">
-<h3 class="font-headline-sm text-headline-sm">People with Access</h3>
-<span class="bg-secondary-container text-on-secondary-container px-2 py-1 rounded-md text-label-caps">{{ shares.count|add:1 }} total</span>
-</div>
-<div class="space-y-6">
-<div class="flex items-center gap-4 group">
-<div class="relative">
-<div class="w-12 h-12 rounded-full border-2 border-primary overflow-hidden flex items-center justify-center bg-surface-container-highest">
-{% if album.owner.profile_picture %}
-<img class="w-full h-full object-cover" src="{{ album.owner.profile_picture.url }}"/>
-{% else %}
-<span class="font-bold text-primary">{{ album.owner.full_name|default:album.owner.user.username|first|upper }}</span>
-{% endif %}
-</div>
-<div class="absolute -bottom-1 -right-1 bg-primary text-white p-0.5 rounded-full border-2 border-surface">
-<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">stars</span>
-</div>
-</div>
-<div class="flex-1">
-<p class="font-body-md font-bold text-on-surface">{{ album.owner.full_name|default:album.owner.user.username }}</p>
-<p class="text-label-caps text-primary uppercase">Owner</p>
-</div>
-</div>
+        <!-- Right Column: People with Access -->
+        <div class="md:col-span-5">
+          <article
+            class="bg-surface-container-lowest p-8 rounded-xl asymmetric-shadow sticky top-24"
+          >
+            <div class="mb-8 flex items-center justify-between">
+              <h3 class="font-headline-sm text-headline-sm">
+                People with Access
+              </h3>
+              <span
+                class="bg-secondary-container text-on-secondary-container px-2 py-1 rounded-md text-label-caps"
+                >{{ shares.count|add:1 }} total</span
+              >
+            </div>
+            <div class="space-y-6">
+              <div class="flex items-center gap-4 group">
+                <div class="relative">
+                  <div
+                    class="w-12 h-12 rounded-full border-2 border-primary overflow-hidden flex items-center justify-center bg-surface-container-highest"
+                  >
+                    {% if album.owner.profile_picture %}
+                    <img
+                      class="w-full h-full object-cover"
+                      src="{{ album.owner.profile_picture.url }}"
+                    />
+                    {% else %}
+                    <span class="font-bold text-primary"
+                      >{{
+                      album.owner.full_name|default:album.owner.user.username|first|upper
+                      }}</span
+                    >
+                    {% endif %}
+                  </div>
+                  <div
+                    class="absolute -bottom-1 -right-1 bg-primary text-white p-0.5 rounded-full border-2 border-surface"
+                  >
+                    <span
+                      class="material-symbols-outlined text-[12px]"
+                      style="font-variation-settings: &quot;FILL&quot; 1"
+                      >stars</span
+                    >
+                  </div>
+                </div>
+                <div class="flex-1">
+                  <p class="font-body-md font-bold text-on-surface">
+                    {{ album.owner.full_name|default:album.owner.user.username
+                    }}
+                  </p>
+                  <p class="text-label-caps text-primary uppercase">Owner</p>
+                </div>
+              </div>
 
-{% for share in shares %}
-<div class="flex items-center gap-4 group">
-<div class="w-12 h-12 rounded-full border border-outline-variant overflow-hidden flex items-center justify-center bg-surface-container-highest">
-{% if share.shared_with.profile_picture %}
-<img class="w-full h-full object-cover" src="{{ share.shared_with.profile_picture.url }}"/>
-{% else %}
-<span class="font-bold text-on-surface-variant">{{ share.shared_with.full_name|default:share.shared_with.user.username|first|upper }}</span>
-{% endif %}
-</div>
-<div class="flex-1">
-<p class="font-body-md font-bold text-on-surface">{{ share.shared_with.full_name|default:share.shared_with.user.username }}</p>
-<p class="text-label-caps uppercase {% if share.status == 'approved' %}text-on-surface-variant{% elif share.status == 'pending' %}text-primary{% else %}text-error{% endif %}">
-  {{ share.get_status_display }}
-</p>
-</div>
-</div>
-{% empty %}
-<p class="text-on-surface-variant text-body-md italic">No one else has joined yet.</p>
-{% endfor %}
-</div>
-</article>
-</div>
-</div>
-</main>
+              {% for share in shares %}
+              <div class="flex items-center gap-4 group">
+                <div
+                  class="w-12 h-12 rounded-full border border-outline-variant overflow-hidden flex items-center justify-center bg-surface-container-highest"
+                >
+                  {% if share.shared_with.profile_picture %}
+                  <img
+                    class="w-full h-full object-cover"
+                    src="{{ share.shared_with.profile_picture.url }}"
+                  />
+                  {% else %}
+                  <span class="font-bold text-on-surface-variant"
+                    >{{
+                    share.shared_with.full_name|default:share.shared_with.user.username|first|upper
+                    }}</span
+                  >
+                  {% endif %}
+                </div>
+                <div class="flex-1">
+                  <p class="font-body-md font-bold text-on-surface">
+                    {{
+                    share.shared_with.full_name|default:share.shared_with.user.username
+                    }}
+                  </p>
+                  <p
+                    class="text-label-caps uppercase {% if share.status == 'approved' %}text-on-surface-variant{% elif share.status == 'pending' %}text-primary{% else %}text-error{% endif %}"
+                  >
+                    {{ share.get_status_display }}
+                  </p>
+                </div>
+              </div>
+              {% empty %}
+              <p class="text-on-surface-variant text-body-md italic">
+                No one else has joined yet.
+              </p>
+              {% endfor %}
+            </div>
+          </article>
+        </div>
+      </div>
+    </main>
 
-<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center py-2 px-margin-mobile bg-surface-container shadow-[0_-4px_24px_rgba(74,69,64,0.08)] md:hidden">
-<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 transition-transform duration-150" href="{% url 'my_albums' %}">
-<span class="material-symbols-outlined">photo_album</span>
-<span class="font-label-caps text-label-caps mt-1">Albums</span>
-</a>
-</nav>
+    <nav
+      class="fixed bottom-0 w-full z-50 flex justify-around items-center py-2 px-margin-mobile bg-surface-container shadow-[0_-4px_24px_rgba(74,69,64,0.08)] md:hidden"
+    >
+      <a
+        class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 transition-transform duration-150"
+        href="{% url 'my_albums' %}"
+      >
+        <span class="material-symbols-outlined">photo_album</span>
+        <span class="font-label-caps text-label-caps mt-1">Albums</span>
+      </a>
+    </nav>
 
-<script>
-    function copyLink(btn) {
-      const link = document.getElementById('join-link').textContent;
-      navigator.clipboard.writeText(link).then(() => {
-        const originalHTML = btn.innerHTML;
-        btn.innerHTML = '<span class="material-symbols-outlined text-[18px]">check</span> COPIED';
-        btn.classList.add('bg-primary-container', 'text-on-primary-container');
-        setTimeout(() => {
-          btn.innerHTML = originalHTML;
-          btn.classList.remove('bg-primary-container', 'text-on-primary-container');
-        }, 2000);
-      });
-    }
-  </script>
-</body></html>
+    <script>
+      function copyLink(btn) {
+        const link = document.getElementById("join-link").textContent;
+        navigator.clipboard.writeText(link).then(() => {
+          const originalHTML = btn.innerHTML;
+          btn.innerHTML =
+            '<span class="material-symbols-outlined text-[18px]">check</span> COPIED';
+          btn.classList.add(
+            "bg-primary-container",
+            "text-on-primary-container",
+          );
+          setTimeout(() => {
+            btn.innerHTML = originalHTML;
+            btn.classList.remove(
+              "bg-primary-container",
+              "text-on-primary-container",
+            );
+          }, 2000);
+        });
+      }
+    </script>
+  </body>
+</html>

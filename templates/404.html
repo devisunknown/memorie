@@ -1,105 +1,142 @@
-<!DOCTYPE html>
+{% load static %}
+<!doctype html>
 
-<html class="scroll-smooth" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>404 - A Moment Lost in Time | Osei Antwi Lane</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
+<html class="scroll-smooth" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link
+      rel="icon"
+      href="{% static 'images/memorie.png' %}"
+      type="image/x-icon"
+    />
+    <title>404 - A Moment Lost in Time | Osei Antwi Lane</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&amp;family=DM+Sans:wght@400;500;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
       tailwind.config = {
         darkMode: "class",
         theme: {
           extend: {
-            "colors": {
-                    "tertiary-fixed-dim": "#c7c6c4",
-                    "outline-variant": "#d0c5af",
-                    "on-tertiary-container": "#444543",
-                    "on-tertiary": "#ffffff",
-                    "primary-fixed": "#ffe088",
-                    "secondary": "#675c58",
-                    "on-error-container": "#93000a",
-                    "secondary-fixed-dim": "#d2c4be",
-                    "error": "#ba1a1a",
-                    "primary": "#735c00",
-                    "on-surface-variant": "#4d4635",
-                    "on-surface": "#1f1b17",
-                    "on-primary-fixed-variant": "#574500",
-                    "tertiary": "#5e5f5d",
-                    "surface-variant": "#eae1da",
-                    "surface-tint": "#735c00",
-                    "primary-fixed-dim": "#e9c349",
-                    "surface": "#fff8f4",
-                    "on-primary": "#ffffff",
-                    "primary-container": "#d4af37",
-                    "on-primary-fixed": "#241a00",
-                    "surface-container-lowest": "#ffffff",
-                    "secondary-container": "#ebddd7",
-                    "surface-container-highest": "#eae1da",
-                    "background": "#fff8f4",
-                    "tertiary-container": "#b3b3b0",
-                    "on-tertiary-fixed-variant": "#464745",
-                    "error-container": "#ffdad6",
-                    "inverse-on-surface": "#f8efe8",
-                    "inverse-surface": "#34302b",
-                    "surface-dim": "#e1d8d2",
-                    "on-secondary-fixed": "#211a17",
-                    "surface-container-high": "#f0e7df",
-                    "surface-container-low": "#fbf2eb",
-                    "on-error": "#ffffff",
-                    "inverse-primary": "#e9c349",
-                    "on-background": "#1f1b17",
-                    "tertiary-fixed": "#e3e2e0",
-                    "surface-container": "#f5ece5",
-                    "secondary-fixed": "#eedfda",
-                    "on-secondary-container": "#6b605c",
-                    "on-secondary": "#ffffff",
-                    "on-primary-container": "#554300",
-                    "on-tertiary-fixed": "#1a1c1a",
-                    "surface-bright": "#fff8f4",
-                    "outline": "#7f7663",
-                    "on-secondary-fixed-variant": "#4e4541"
+            colors: {
+              "tertiary-fixed-dim": "#c7c6c4",
+              "outline-variant": "#d0c5af",
+              "on-tertiary-container": "#444543",
+              "on-tertiary": "#ffffff",
+              "primary-fixed": "#ffe088",
+              secondary: "#675c58",
+              "on-error-container": "#93000a",
+              "secondary-fixed-dim": "#d2c4be",
+              error: "#ba1a1a",
+              primary: "#735c00",
+              "on-surface-variant": "#4d4635",
+              "on-surface": "#1f1b17",
+              "on-primary-fixed-variant": "#574500",
+              tertiary: "#5e5f5d",
+              "surface-variant": "#eae1da",
+              "surface-tint": "#735c00",
+              "primary-fixed-dim": "#e9c349",
+              surface: "#fff8f4",
+              "on-primary": "#ffffff",
+              "primary-container": "#d4af37",
+              "on-primary-fixed": "#241a00",
+              "surface-container-lowest": "#ffffff",
+              "secondary-container": "#ebddd7",
+              "surface-container-highest": "#eae1da",
+              background: "#fff8f4",
+              "tertiary-container": "#b3b3b0",
+              "on-tertiary-fixed-variant": "#464745",
+              "error-container": "#ffdad6",
+              "inverse-on-surface": "#f8efe8",
+              "inverse-surface": "#34302b",
+              "surface-dim": "#e1d8d2",
+              "on-secondary-fixed": "#211a17",
+              "surface-container-high": "#f0e7df",
+              "surface-container-low": "#fbf2eb",
+              "on-error": "#ffffff",
+              "inverse-primary": "#e9c349",
+              "on-background": "#1f1b17",
+              "tertiary-fixed": "#e3e2e0",
+              "surface-container": "#f5ece5",
+              "secondary-fixed": "#eedfda",
+              "on-secondary-container": "#6b605c",
+              "on-secondary": "#ffffff",
+              "on-primary-container": "#554300",
+              "on-tertiary-fixed": "#1a1c1a",
+              "surface-bright": "#fff8f4",
+              outline: "#7f7663",
+              "on-secondary-fixed-variant": "#4e4541",
             },
-            "borderRadius": {
-                    "DEFAULT": "0.125rem",
-                    "lg": "0.25rem",
-                    "xl": "0.5rem",
-                    "full": "0.75rem"
+            borderRadius: {
+              DEFAULT: "0.125rem",
+              lg: "0.25rem",
+              xl: "0.5rem",
+              full: "0.75rem",
             },
-            "spacing": {
-                    "container-max": "1280px",
-                    "margin-mobile": "16px",
-                    "unit": "8px",
-                    "margin-desktop": "64px",
-                    "gutter": "24px"
+            spacing: {
+              "container-max": "1280px",
+              "margin-mobile": "16px",
+              unit: "8px",
+              "margin-desktop": "64px",
+              gutter: "24px",
             },
-            "fontFamily": {
-                    "headline-sm": ["Playfair Display"],
-                    "headline-md": ["Playfair Display"],
-                    "display-lg": ["Playfair Display"],
-                    "body-lg": ["DM Sans"],
-                    "label-caps": ["DM Sans"],
-                    "display-lg-mobile": ["Playfair Display"],
-                    "body-md": ["DM Sans"]
+            fontFamily: {
+              "headline-sm": ["Playfair Display"],
+              "headline-md": ["Playfair Display"],
+              "display-lg": ["Playfair Display"],
+              "body-lg": ["DM Sans"],
+              "label-caps": ["DM Sans"],
+              "display-lg-mobile": ["Playfair Display"],
+              "body-md": ["DM Sans"],
             },
-            "fontSize": {
-                    "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "500"}],
-                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
-                    "display-lg": ["56px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
-                    "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "700"}],
-                    "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
-                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
-            }
+            fontSize: {
+              "headline-sm": ["24px", { lineHeight: "1.4", fontWeight: "500" }],
+              "headline-md": ["32px", { lineHeight: "1.3", fontWeight: "600" }],
+              "display-lg": [
+                "56px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+              "label-caps": [
+                "12px",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "0.1em",
+                  fontWeight: "700",
+                },
+              ],
+              "display-lg-mobile": [
+                "36px",
+                { lineHeight: "1.2", fontWeight: "700" },
+              ],
+              "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+            },
           },
         },
-      }
+      };
     </script>
-<style>
+    <style>
       .material-symbols-outlined {
-        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
       }
       .paper-texture {
         background-image: url("https://www.transparenttextures.com/patterns/cream-paper.png");
@@ -111,112 +148,232 @@
         animation: fadeIn 1.5s ease-out forwards;
       }
       @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
     </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
   </head>
-<body class="bg-surface text-on-surface font-body-md flex flex-col min-h-screen paper-texture">
-<!-- TopAppBar -->
-<header class="w-full top-0 sticky bg-surface dark:bg-surface-dim shadow-[0_4px_20px_rgba(74,69,64,0.08)] z-50">
-<div class="flex justify-between items-center px-margin-desktop py-unit max-w-container-max mx-auto h-20">
-<div class="flex items-center gap-4 cursor-pointer active:opacity-70">
-<span class="material-symbols-outlined text-primary" data-icon="menu">menu</span>
-<span class="font-headline-md text-headline-md italic text-primary dark:text-primary-fixed-dim tracking-tight">Osei Antwi Lane</span>
-</div>
-<div class="flex items-center gap-gutter">
-<nav class="hidden md:flex gap-8 items-center">
-<a class="text-on-surface-variant dark:text-tertiary-fixed-dim hover:text-primary transition-colors duration-300 font-label-caps tracking-widest" href="#">The Archive</a>
-<a class="text-on-surface-variant dark:text-tertiary-fixed-dim hover:text-primary transition-colors duration-300 font-label-caps tracking-widest" href="#">Our Story</a>
-<a class="text-on-surface-variant dark:text-tertiary-fixed-dim hover:text-primary transition-colors duration-300 font-label-caps tracking-widest" href="#">Family Tree</a>
-</nav>
-<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="history_edu">history_edu</span>
-</div>
-</div>
-</header>
-<!-- Main Content Canvas -->
-<main class="flex-grow flex flex-col items-center justify-center px-margin-mobile md:px-margin-desktop py-24 relative overflow-hidden">
-<!-- Subtle Background Decorative Element -->
-<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
-<span class="material-symbols-outlined text-[400px]" data-icon="auto_stories">auto_stories</span>
-</div>
-<div class="max-w-3xl w-full text-center flex flex-col items-center fade-in">
-<!-- Hero Memory Card (Polaroid Style) -->
-<div class="relative mb-16 rotate-[-2deg] hover:rotate-0 transition-transform duration-700 ease-in-out">
-<div class="bg-white p-6 pb-16 polaroid-shadow border border-outline-variant/20">
-<div class="w-72 h-80 md:w-96 md:h-[420px] bg-surface-container overflow-hidden relative">
-<img class="w-full h-full object-cover grayscale-[20%] sepia-[10%] brightness-[0.95]" data-alt="A nostalgic, cinematic photograph of an empty, weathered wooden rocking chair sitting on a sun-drenched porch of an old family estate. The lighting is warm and golden, reminiscent of late afternoon sun, casting long, soft shadows. The overall aesthetic is one of quiet reverence and nostalgia, featuring a soft-focus background of lush, blurred trees. The palette is dominated by warm creams, muted golds, and deep wood tones, creating a high-end editorial feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALjsbWoKakaAYPeTfeBM1qez9SIyglwe_MBe7DczAtJhCd7IKnvV_OWhhKeKA60y9G4TpEfLCJfgb7jTWdBUZi4TOi91UX6A6n8I_JSUzZbVF-hnYMjIFaYVIQwHlWhHawA0sElJXD5t9E2rHjqXWyAg0nNWJKlwZ11zVKHlKUmKvQSZrIjCt80TJTBFeQLVSIit-9eptqcu9hxf8QdsPWBmpCWiilF8UqXD1khz9NbdRRkAqmtZouRw"/>
-<div class="absolute inset-0 border-[1px] border-black/5 pointer-events-none inset-shadow"></div>
-</div>
-</div>
-<!-- Decorative Tape Effect -->
-<div class="absolute -top-4 left-1/2 -translate-x-1/2 w-24 h-8 bg-primary/10 backdrop-blur-sm -rotate-2"></div>
-</div>
-<!-- Error Message Typography -->
-<div class="space-y-6">
-<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary leading-tight">
-                    404: This memory hasn't been written yet.
-                </h1>
-<p class="font-body-lg text-body-lg text-secondary max-w-xl mx-auto leading-relaxed italic">
-                    Like a leaf pressed between the pages of an unread book, the page you are looking for has drifted from the archive.
-                </p>
-<!-- Navigation Actions -->
-<div class="flex flex-col md:flex-row items-center justify-center gap-6 mt-12">
-<a class="group flex items-center gap-3 px-8 py-4 bg-primary text-white font-label-caps tracking-widest rounded-sm hover:bg-on-primary-container transition-all duration-300 shadow-lg hover:shadow-primary/20" href="/">
-<span class="material-symbols-outlined text-sm" data-icon="home">home</span>
-                        Return Home
-                    </a>
-<a class="group flex items-center gap-3 px-8 py-4 border border-primary/30 text-primary font-label-caps tracking-widest rounded-sm hover:bg-primary/5 transition-all duration-300" href="/timeline">
-                        Explore the Timeline
-                        <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
-</a>
-</div>
-</div>
-<!-- Timeline Rail (Decorative segment) -->
-<div class="mt-24 flex items-center gap-4 w-full justify-center">
-<div class="h-[1px] flex-grow max-w-[100px] bg-gradient-to-r from-transparent to-primary/30"></div>
-<div class="w-2 h-2 rounded-full border border-primary/30 bg-surface"></div>
-<div class="font-label-caps text-outline text-[10px] uppercase tracking-[0.3em]">Lost in time</div>
-<div class="w-2 h-2 rounded-full border border-primary/30 bg-surface"></div>
-<div class="h-[1px] flex-grow max-w-[100px] bg-gradient-to-l from-transparent to-primary/30"></div>
-</div>
-</div>
-</main>
-<!-- Footer -->
-<footer class="w-full mt-auto bg-surface-container-low dark:bg-surface-container-lowest border-t border-outline-variant/30">
-<div class="flex flex-col md:flex-row justify-between items-center gap-gutter px-margin-desktop py-12 max-w-container-max mx-auto">
-<div class="space-y-4 text-center md:text-left">
-<div class="font-headline-sm text-headline-sm text-primary dark:text-primary-fixed">Osei Antwi Lane</div>
-<p class="font-body-md text-body-md dark:text-on-tertiary-fixed-variant max-w-sm text-on-surface-variant">
-                    © 2024 Osei Antwi Lane. Preserving the legacy of our ancestors for the generations yet to come.
-                </p>
-</div>
-<div class="flex flex-wrap justify-center gap-x-8 gap-y-4">
-<a class="text-on-surface-variant dark:text-tertiary-fixed-dim hover:text-primary dark:hover:text-primary-fixed underline decoration-primary/20 font-body-md transition-all duration-200" href="#">Our Story</a>
-<a class="text-on-surface-variant dark:text-tertiary-fixed-dim hover:text-primary dark:hover:text-primary-fixed underline decoration-primary/20 font-body-md transition-all duration-200" href="#">The Archive</a>
-<a class="text-on-surface-variant dark:text-tertiary-fixed-dim hover:text-primary dark:hover:text-primary-fixed underline decoration-primary/20 font-body-md transition-all duration-200" href="#">Family Tree</a>
-<a class="text-on-surface-variant dark:text-tertiary-fixed-dim hover:text-primary dark:hover:text-primary-fixed underline decoration-primary/20 font-body-md transition-all duration-200" href="#">Contribution Guide</a>
-<a class="text-on-surface-variant dark:text-tertiary-fixed-dim hover:text-primary dark:hover:text-primary-fixed underline decoration-primary/20 font-body-md transition-all duration-200" href="#">Privacy Policy</a>
-</div>
-</div>
-</footer>
-<script>
-        // Subtle parallax effect for the polaroid
-        document.addEventListener('mousemove', (e) => {
-            const polaroid = document.querySelector('.polaroid-shadow');
-            if (polaroid) {
-                const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
-                const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
-                polaroid.style.transform = `translate(${moveX}px, ${moveY}px)`;
-            }
-        });
+  <body
+    class="bg-surface text-on-surface font-body-md flex flex-col min-h-screen paper-texture"
+  >
+    <!-- TopAppBar -->
+    <header
+      class="w-full top-0 sticky bg-surface dark:bg-surface-dim shadow-[0_4px_20px_rgba(74,69,64,0.08)] z-50"
+    >
+      <div
+        class="flex justify-between items-center px-margin-desktop py-unit max-w-container-max mx-auto h-20"
+      >
+        <div class="flex items-center gap-4 cursor-pointer active:opacity-70">
+          <span class="material-symbols-outlined text-primary" data-icon="menu"
+            >menu</span
+          >
+          <span
+            class="font-headline-md text-headline-md italic text-primary dark:text-primary-fixed-dim tracking-tight"
+            >Osei Antwi Lane</span
+          >
+        </div>
+        <div class="flex items-center gap-gutter">
+          <nav class="hidden md:flex gap-8 items-center">
+            <a
+              class="text-on-surface-variant dark:text-tertiary-fixed-dim hover:text-primary transition-colors duration-300 font-label-caps tracking-widest"
+              href="#"
+              >The Archive</a
+            >
+            <a
+              class="text-on-surface-variant dark:text-tertiary-fixed-dim hover:text-primary transition-colors duration-300 font-label-caps tracking-widest"
+              href="#"
+              >Our Story</a
+            >
+            <a
+              class="text-on-surface-variant dark:text-tertiary-fixed-dim hover:text-primary transition-colors duration-300 font-label-caps tracking-widest"
+              href="#"
+              >Family Tree</a
+            >
+          </nav>
+          <span
+            class="material-symbols-outlined text-primary cursor-pointer"
+            data-icon="history_edu"
+            >history_edu</span
+          >
+        </div>
+      </div>
+    </header>
+    <!-- Main Content Canvas -->
+    <main
+      class="flex-grow flex flex-col items-center justify-center px-margin-mobile md:px-margin-desktop py-24 relative overflow-hidden"
+    >
+      <!-- Subtle Background Decorative Element -->
+      <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none"
+      >
+        <span
+          class="material-symbols-outlined text-[400px]"
+          data-icon="auto_stories"
+          >auto_stories</span
+        >
+      </div>
+      <div
+        class="max-w-3xl w-full text-center flex flex-col items-center fade-in"
+      >
+        <!-- Hero Memory Card (Polaroid Style) -->
+        <div
+          class="relative mb-16 rotate-[-2deg] hover:rotate-0 transition-transform duration-700 ease-in-out"
+        >
+          <div
+            class="bg-white p-6 pb-16 polaroid-shadow border border-outline-variant/20"
+          >
+            <div
+              class="w-72 h-80 md:w-96 md:h-[420px] bg-surface-container overflow-hidden relative"
+            >
+              <img
+                class="w-full h-full object-cover grayscale-[20%] sepia-[10%] brightness-[0.95]"
+                data-alt="A nostalgic, cinematic photograph of an empty, weathered wooden rocking chair sitting on a sun-drenched porch of an old family estate. The lighting is warm and golden, reminiscent of late afternoon sun, casting long, soft shadows. The overall aesthetic is one of quiet reverence and nostalgia, featuring a soft-focus background of lush, blurred trees. The palette is dominated by warm creams, muted golds, and deep wood tones, creating a high-end editorial feel."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuALjsbWoKakaAYPeTfeBM1qez9SIyglwe_MBe7DczAtJhCd7IKnvV_OWhhKeKA60y9G4TpEfLCJfgb7jTWdBUZi4TOi91UX6A6n8I_JSUzZbVF-hnYMjIFaYVIQwHlWhHawA0sElJXD5t9E2rHjqXWyAg0nNWJKlwZ11zVKHlKUmKvQSZrIjCt80TJTBFeQLVSIit-9eptqcu9hxf8QdsPWBmpCWiilF8UqXD1khz9NbdRRkAqmtZouRw"
+              />
+              <div
+                class="absolute inset-0 border-[1px] border-black/5 pointer-events-none inset-shadow"
+              ></div>
+            </div>
+          </div>
+          <!-- Decorative Tape Effect -->
+          <div
+            class="absolute -top-4 left-1/2 -translate-x-1/2 w-24 h-8 bg-primary/10 backdrop-blur-sm -rotate-2"
+          ></div>
+        </div>
+        <!-- Error Message Typography -->
+        <div class="space-y-6">
+          <h1
+            class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary leading-tight"
+          >
+            404: This memory hasn't been written yet.
+          </h1>
+          <p
+            class="font-body-lg text-body-lg text-secondary max-w-xl mx-auto leading-relaxed italic"
+          >
+            Like a leaf pressed between the pages of an unread book, the page
+            you are looking for has drifted from the archive.
+          </p>
+          <!-- Navigation Actions -->
+          <div
+            class="flex flex-col md:flex-row items-center justify-center gap-6 mt-12"
+          >
+            <a
+              class="group flex items-center gap-3 px-8 py-4 bg-primary text-white font-label-caps tracking-widest rounded-sm hover:bg-on-primary-container transition-all duration-300 shadow-lg hover:shadow-primary/20"
+              href="/"
+            >
+              <span class="material-symbols-outlined text-sm" data-icon="home"
+                >home</span
+              >
+              Return Home
+            </a>
+            <a
+              class="group flex items-center gap-3 px-8 py-4 border border-primary/30 text-primary font-label-caps tracking-widest rounded-sm hover:bg-primary/5 transition-all duration-300"
+              href="/timeline"
+            >
+              Explore the Timeline
+              <span
+                class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform"
+                data-icon="arrow_forward"
+                >arrow_forward</span
+              >
+            </a>
+          </div>
+        </div>
+        <!-- Timeline Rail (Decorative segment) -->
+        <div class="mt-24 flex items-center gap-4 w-full justify-center">
+          <div
+            class="h-[1px] flex-grow max-w-[100px] bg-gradient-to-r from-transparent to-primary/30"
+          ></div>
+          <div
+            class="w-2 h-2 rounded-full border border-primary/30 bg-surface"
+          ></div>
+          <div
+            class="font-label-caps text-outline text-[10px] uppercase tracking-[0.3em]"
+          >
+            Lost in time
+          </div>
+          <div
+            class="w-2 h-2 rounded-full border border-primary/30 bg-surface"
+          ></div>
+          <div
+            class="h-[1px] flex-grow max-w-[100px] bg-gradient-to-l from-transparent to-primary/30"
+          ></div>
+        </div>
+      </div>
+    </main>
+    <!-- Footer -->
+    <footer
+      class="w-full mt-auto bg-surface-container-low dark:bg-surface-container-lowest border-t border-outline-variant/30"
+    >
+      <div
+        class="flex flex-col md:flex-row justify-between items-center gap-gutter px-margin-desktop py-12 max-w-container-max mx-auto"
+      >
+        <div class="space-y-4 text-center md:text-left">
+          <div
+            class="font-headline-sm text-headline-sm text-primary dark:text-primary-fixed"
+          >
+            Osei Antwi Lane
+          </div>
+          <p
+            class="font-body-md text-body-md dark:text-on-tertiary-fixed-variant max-w-sm text-on-surface-variant"
+          >
+            © 2024 Osei Antwi Lane. Preserving the legacy of our ancestors for
+            the generations yet to come.
+          </p>
+        </div>
+        <div class="flex flex-wrap justify-center gap-x-8 gap-y-4">
+          <a
+            class="text-on-surface-variant dark:text-tertiary-fixed-dim hover:text-primary dark:hover:text-primary-fixed underline decoration-primary/20 font-body-md transition-all duration-200"
+            href="#"
+            >Our Story</a
+          >
+          <a
+            class="text-on-surface-variant dark:text-tertiary-fixed-dim hover:text-primary dark:hover:text-primary-fixed underline decoration-primary/20 font-body-md transition-all duration-200"
+            href="#"
+            >The Archive</a
+          >
+          <a
+            class="text-on-surface-variant dark:text-tertiary-fixed-dim hover:text-primary dark:hover:text-primary-fixed underline decoration-primary/20 font-body-md transition-all duration-200"
+            href="#"
+            >Family Tree</a
+          >
+          <a
+            class="text-on-surface-variant dark:text-tertiary-fixed-dim hover:text-primary dark:hover:text-primary-fixed underline decoration-primary/20 font-body-md transition-all duration-200"
+            href="#"
+            >Contribution Guide</a
+          >
+          <a
+            class="text-on-surface-variant dark:text-tertiary-fixed-dim hover:text-primary dark:hover:text-primary-fixed underline decoration-primary/20 font-body-md transition-all duration-200"
+            href="#"
+            >Privacy Policy</a
+          >
+        </div>
+      </div>
+    </footer>
+    <script>
+      // Subtle parallax effect for the polaroid
+      document.addEventListener("mousemove", (e) => {
+        const polaroid = document.querySelector(".polaroid-shadow");
+        if (polaroid) {
+          const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
+          const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
+          polaroid.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        }
+      });
 
-        // Console log for theme check
-        console.log("Memory Archival System: 404 Handled with Elegance.");
+      // Console log for theme check
+      console.log("Memory Archival System: 404 Handled with Elegance.");
     </script>
-</body></html>
+  </body>
+</html>
