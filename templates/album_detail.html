@@ -413,7 +413,7 @@
         <div class="flex flex-wrap justify-center gap-4 md:gap-8 reveal active">
           {% for cat in category_counts %}
           <a
-            href="?category={{ cat.category }}"
+            href="?category={{ cat.category }}{% if search_query %}&search={{ search_query }}{% endif %}"
             class="flex items-center gap-2 bg-surface-container-low px-4 py-2 rounded-full border border-outline-variant/20 hover:border-primary/40 transition-all"
           >
             <span class="w-2 h-2 rounded-full bg-primary"></span>
@@ -441,13 +441,6 @@
           class="bg-surface-container-low rounded-2xl p-4 md:p-6 flex flex-col md:flex-row gap-4 items-center justify-between border border-outline-variant/10"
         >
           <form method="GET" class="flex flex-wrap gap-3 items-center w-full">
-            {% if current_category %}
-            <input
-              type="hidden"
-              name="category"
-              value="{{ current_category }}"
-            />
-            {% endif %}
             <div class="relative flex-1 min-w-[200px]">
               <span
                 class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline"
@@ -470,13 +463,7 @@
               {% for key, label in categories %}
               <option
                 value="{{ key }}"
-                {%
-                if
-                current_category=""
-                ="key"
-                %}selected{%
-                endif
-                %}
+                {% if current_category == key %}selected{% endif %}
               >
                 {{ label }}
               </option>
@@ -587,7 +574,7 @@
               </div>
             </div>
           </div>
-        
+          {% empty %}
           <div class="text-center py-20">
             <span class="material-symbols-outlined text-outline text-6xl mb-4"
               >photo_library</span
