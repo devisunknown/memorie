@@ -413,8 +413,7 @@
                 </div>
                 <div class="flex-1">
                   <p class="font-body-md font-bold text-on-surface">
-                    {{ album.owner.full_name|default:album.owner.user.username
-                    }}
+                    {{ album.owner.full_name|default:album.owner.user.username}}
                   </p>
                   <p class="text-label-caps text-primary uppercase">Owner</p>
                 </div>
@@ -432,10 +431,7 @@
                   />
                   {% else %}
                   <span class="font-bold text-on-surface-variant"
-                    >{{
-                    share.shared_with.full_name|default:share.shared_with.user.username|first|upper
-                    }}</span
-                  >
+                    >{{share.shared_with.full_name|default:share.shared_with.user.username|first|upper}}</span>
                   {% endif %}
                 </div>
                 <div class="flex-1">
