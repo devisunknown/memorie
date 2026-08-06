@@ -89,15 +89,14 @@ USE_I18N = True
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
-STATIC_URL = 'static/'
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')'
 
 # Your source static folder during development
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 
-# Destination directory for 'python manage.py collectstatic'
-STATIC_ROOT = BASE_DIR / "staticfiles"
+
 
 # WhiteNoise storage engine
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
