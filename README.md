@@ -1,5 +1,4 @@
 
-# memorie
 # Memorie
 
 A photo album sharing app built with Django, Tailwind CSS, and Cloudinary. Create albums, upload photos, and share them with friends and family — either via a shareable link or a direct username invite, with a lightweight guest-approval flow for non-account visitors.
