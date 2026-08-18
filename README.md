@@ -62,16 +62,6 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-### Environment Variables
-
-```
-SECRET_KEY=
-DEBUG=True
-DATABASE_URL=
-CLOUDINARY_CLOUD_NAME=
-CLOUDINARY_API_KEY=
-CLOUDINARY_API_SECRET=
-```
 
 ## Roadmap Ideas
 
