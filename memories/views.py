@@ -115,6 +115,15 @@ def works(request):
 
 @ratelimit(key='ip', rate='10/m', method='POST', block=True)
 def signup(request):
+    """Only the server owner (superuser) creates accounts on a self-hosted
+    instance — via this form or the admin panel. Public signups are off."""
+    if not (request.user.is_authenticated and request.user.is_superuser):
+        messages.error(
+            request,
+            'This is a self-hosted Memorie instance. Ask its owner to create an account for you (via a share link or the admin panel).'
+        )
+        return redirect('login')
+
     next_url = request.POST.get('next') or request.GET.get('next') or 'my_albums'
 
     if request.method == 'POST':

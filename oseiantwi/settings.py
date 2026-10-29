@@ -7,13 +7,15 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.getenv('SECRET_KEY')
+# Self-hosted defaults: generate a fallback key for quick starts, but rely
+# on SECRET_KEY from .env for anything permanent.
+SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-change-me-self-hosted')
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
-RENDER_EXTERNAL_HOSTNAME = os.getenv('RENDER_EXTERNAL_HOSTNAME')
-if RENDER_EXTERNAL_HOSTNAME:
-    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+
+# When served behind a reverse proxy (Caddy/nginx/Traefik), add the host here.
+CSRF_TRUSTED_HOSTS = os.getenv('CSRF_TRUSTED_HOSTS', '').split(',') if os.getenv('CSRF_TRUSTED_HOSTS') else []
 
 # Application definition
 INSTALLED_APPS = [
@@ -23,16 +25,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
-    'cloudinary',
-    'cloudinary_storage',
-    
+
     'memories',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # ← SECOND IN THE LIST
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -61,19 +60,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'oseiantwi.wsgi.application'
 
+# Self-hosted first: everything from DATABASE_URL.
+# Default to a local Postgres (docker compose) when unset.
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "postgres",
-        "USER": "postgres.qxznsbtnthglzczjangx",
-        "PASSWORD": os.getenv("DB_PASSWORD"),  
-        "HOST": "aws-0-eu-west-1.pooler.supabase.com",
-        "PORT": "5432",
-    }
+    "default": dj_database_url.config(
+        default="postgres://memorie:memorie@localhost:5432/memorie"
+    ),
 }
 
-LOGIN_URL = 'login' 
-LOGIN_REDIRECT='album'
+LOGIN_URL = 'login'
+LOGIN_REDIRECT = 'album'
+
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
@@ -89,32 +86,19 @@ USE_I18N = True
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
-
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-# Your source static folder during development
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
-
-# WhiteNoise storage engine
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-# Default primary key field type
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# Cloudinary
-import cloudinary
-cloudinary.config(
-    cloud_name=os.getenv('CLOUDINARY_CLOUD_NAME'),
-    api_key=os.getenv('CLOUDINARY_API_KEY'),
-    api_secret=os.getenv('CLOUDINARY_API_SECRET'),
-    secure=True
-)
-
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
-
-
-   
+# Uploaded photos live on the host's own disk — mount this as a volume.
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.getenv('MEDIA_ROOT', BASE_DIR / 'media')

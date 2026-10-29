@@ -1,8 +1,7 @@
 import uuid
 
-from django.db import models
 from django.conf import settings
-from cloudinary.models import CloudinaryField
+from django.db import models
 
 
 
@@ -10,7 +9,7 @@ from cloudinary.models import CloudinaryField
 class UserProfile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     full_name = models.CharField(max_length=150)
-    profile_picture = CloudinaryField('profile_picture', folder='osei_antwi/profiles/', null=True, blank=True)
+    profile_picture = models.ImageField(upload_to='profiles/', null=True, blank=True)
     
     
     
@@ -74,7 +73,7 @@ class Image(models.Model):
         related_name='images'
     )
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
-    image = CloudinaryField("image")
+    image = models.ImageField(upload_to='albums/%Y/%m/')
     note = models.TextField(blank=True)
     category = models.CharField(max_length=50)
     uploaded_at = models.DateTimeField(auto_now_add=True)
@@ -107,14 +106,7 @@ class Image(models.Model):
 
     @property
     def download_url(self):
-        
-        url = self.image.url
-        if 'res.cloudinary.com' in url and '/image/upload/' in url:
-            return url.replace('/image/upload/', '/image/upload/fl_attachment/')
-        return url
-
-
-from django.conf import settings
+        return f"{self.image.url}?download=1"
 
     
 
