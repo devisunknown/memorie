@@ -223,7 +223,6 @@ python manage.py migrate && python manage.py runserver
 ```
 
 Code layout:
-
 ```
 memories/       # the Django app: models, views, urls
 oseiantwi/      # project settings
