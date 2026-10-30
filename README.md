@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="static/images/memorie.png" alt="Memorie logo" width="128">
+
 # Memorie 📸
 
 **Self-hosted photo albums. Your photos, your server, your rules.**
